@@ -1,0 +1,59 @@
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-6">
+      <h1 style="font-weight: 100">Nuevo evento</h1>
+    </div>
+
+    <div class="col-md-6">
+
+      <form action="/parks/new" method="POST">
+        <div class="form-group">
+          <label for="name-input">Nombre del evento</label>
+          <input name="name" type="text" class="form-control" id="name-input">
+        </div>
+        <div class="form-group">
+          <label for="date-input">Dia del evento</label>
+          <input name="date" type="Date" class="form-control" id="date-input">
+        </div>
+        <div class="form-group">
+          <label for="description-input">Descripción</label>
+          <input name="description" type="text" class="form-control" id="description-input">
+        </div>
+        <div class="form-group">
+          <label for="type-input">Tipo de evento</label>
+          <input name="type" type="text" class="form-control" id="type-input">
+        </div>
+        <div>
+          <p>Lugar del evento</p>
+        </div>
+        <div class="form-group">
+          <label for="field3">Latitud: </label>
+          <input type="text" name="latitude" placeholder="latitude" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="field4">Longitud: </label>
+          <input type="text" name="longitude" placeholder="longitude" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-dark">Crear evento</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+{{!-- name: String,
+date: Date,
+description: String,
+creator: String, //de modelo CAMBIAR
+assistants: String, //de modelo CAMBIAR
+type: String,
+location: {
+type: {
+type: String
+},
+coordinates: [Number]
+}
+} --}}
