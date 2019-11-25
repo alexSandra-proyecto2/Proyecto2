@@ -1,24 +1,24 @@
 const express = require('express');
 const router = express.Router();
-//const moviesAPI = new APIHandler('https://api.themoviedb.org/3'); //meter la api
 //const Movie = require('../models/Movie.model');
 const APIHandler = require('../services/moviesApi.service')
 /* GET home page */
 const moviesAPI = new APIHandler(`https://api.themoviedb.org/3`)
 
 
-
-router.get('/', (req, res, next) => {
+router.get('/:page', (req, res, next) => {
   //Movie.find()
-  moviesAPI.getFullList(2)
+  moviesAPI.getFullList(req.params.page++)
     .then(allmovies => {
       console.log(allmovies, "allmovies!")
       res.render('movies/listMovies', {
-        movies: allmovies.results
+        movies: allmovies.results,
+        page: req.params.page++
       })
     })
     .catch(err => console.log(err, "err full list"))
 })
+
 //moviesAPI.getFullList(page)
 //axios.get("https: //api.themoviedb.org/3/"
 // .then(response => {
