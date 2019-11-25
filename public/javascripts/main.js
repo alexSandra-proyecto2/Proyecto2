@@ -1,20 +1,22 @@
-function getAllPlacesFromTheAPI(myMap) {
+function getAllMoviesFromTheAPI(myMap) {
   axios.get("/api")
-    .then(response => placePlace(response.data.places, myMap))
+    .then(response => {
+      console.log(response.data.movies)
+      placeMovie(response.data.movies, myMap)
+    })
     .catch(error => console.log(error))
 }
 
-function placePlace(places, myMap) {
-  places.forEach(elm => {
+function placeMovie(movies, myMap) {
+  movies.forEach(elm => {
 
     const center = {
-      lat: elm.location.coordinates[1],
-      lng: elm.location.coordinates[0]
+      lat: elm.location[0].coordinates.lat,
+      lng: elm.location[0].coordinates.lng
     }
     new google.maps.Marker({
       position: center,
-      map: myMap,
-      title: elm.name
+      map: myMap
     });
 
   })
@@ -30,5 +32,5 @@ function initMap() {
     }
   })
 
-  getAllPlacesFromTheAPI(myMap)
+  getAllMoviesFromTheAPI(myMap)
 }

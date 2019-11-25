@@ -20,15 +20,15 @@ router.get('/api', (req, res, next) => {
 
 // to see raw data in your browser, just go on: http://localhost:3000/api/someIdHere
 router.get('/api/:id', (req, res, next) => {
-  let placeId = req.params.id;
-  Place.findOne({
-    _id: placeId
-  }, (error, placeFromDB) => {
+  let movieId = req.params.id;
+  Movie.findOne({
+    _id: movieId
+  }, (error, movieFromDB) => {
     if (error) {
       next(error)
     } else {
       res.status(200).json({
-        place: placeFromDB
+        movie: movieFromDB
       });
     }
   });
