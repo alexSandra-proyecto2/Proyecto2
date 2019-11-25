@@ -1,1 +1,35 @@
-<h1>Lista de peliculas</h1>
+{{!-- <h1>Lista de películas</h1> --}}
+<div class="container coasters-index">
+  {{!-- 
+  <a href="/coasters/new" class="btn btn-dark">Crear nueva montaña rusa</a> --}}
+  <br>
+  <h1 style="font-weight: 100">Lista de películas</h1>
+  <br>
+
+  {{#each movies}}
+  {{!-- <a href="/coasters/{{_id}}" class="btn btn-sm btn-dark">Ver detalles</a> --}}
+  <div class="row">
+    <div class="col-md-1">
+      
+    </div>
+    <div class="col-md-2">
+      <img src="http://image.tmdb.org/t/p/w185/{{poster_path}}" alt="imagen">
+    </div>
+    <div class="col-md-8">
+      <br><br>
+      <h5><strong>Título: </strong> {{title}}</h5>
+      <p><strong>Descripción: </strong>{{overview}}</p>
+      <p><strong>Calificación:</strong> {{vote_average}}</p>
+      <p><strong>Fecha de lanzamiento:</strong> {{release_date}}</p>
+    </div>
+  </div>
+
+  {{!-- <p>{{total_results}}</p> --}}
+  <br>
+  {{/each}}
+  {{!-- <p class="title"></p>
+  <p class="overview"></p> --}}
+
+
+
+</div>
