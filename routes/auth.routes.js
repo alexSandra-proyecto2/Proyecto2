@@ -11,7 +11,6 @@ const {
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
-// prueba//////
 
 
 router.get("/login", (req, res, next) => {

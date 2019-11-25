@@ -3,13 +3,23 @@ const Schema = mongoose.Schema;
 
 const movieSchema = new Schema({
   //TIENE QUE SER COMO ESTA EN LA API
+  id: Number,
   title: String,
   overview: String,
   vote_average: Number,
-  genres: [String],
+  genre_ids: [Number],
   poster_path: String,
   release_date: Date,
-  status: String
+  location: [{
+    type: {
+      type: String,
+    },
+    coordinates: {
+      lng: Number,
+      lat: Number
+    }
+  }]
+
   //meter los actores (movies/getCredits)
   //meter director (movies/getCredits)
 
