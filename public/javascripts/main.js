@@ -9,15 +9,18 @@ function getAllMoviesFromTheAPI(myMap) {
 
 function placeMovie(movies, myMap) {
   movies.forEach(elm => {
-
-    const center = {
-      lat: elm.location[0].coordinates.lat,
-      lng: elm.location[0].coordinates.lng
+    
+  
+      for(let i=0; i<elm.location.length; i++){
+        const center = {
+        lat: elm.location[i].coordinates.lat,
+        lng: elm.location[i].coordinates.lng
+      }
+      new google.maps.Marker({
+        position: center,
+        map: myMap
+      });
     }
-    new google.maps.Marker({
-      position: center,
-      map: myMap
-    });
 
   })
 }
