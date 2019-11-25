@@ -76,7 +76,12 @@ const movie = [{
   "vote_average": 8.9,
   "overview": "Los Singh son una familia india con grandes convicciones culturales de su nación de origen, que emigraron a Reino Unido antes de nacer sus primeros hijos. Uno de ellos querrá casarse con una mujer ajena a su cultura y para ello deberá hacer todos los esfuerzos por convencer a su familia.",
   "release_date": "1995-10-20",
-
+  "location": [{
+    "coordinates": {
+      "lng": -82.5027542,
+      "lat": 40.7864823,
+    }
+  }]
 },
 {
   "popularity": 43.149,
@@ -317,8 +322,8 @@ const movie = [{
   },
     {
       "coordinates": {
-        "lng": -81.6950521,
-        "lat": 36.1490935,
+        "lng": -86.8681597,
+        "lat": 36.1778122,
       }
     }
 ]
@@ -343,10 +348,17 @@ const movie = [{
   "release_date": "1994-09-10",
   "location": [{
     "coordinates": {
-      "lng": -82.5027542,
-      "lat": 40.7864823,
+      "lng": -118.4768669,
+      "lat": 34.0343051,
     }
-  }]
+  },
+    {
+      "coordinates": {
+        "lng": -118.4231056,
+        "lat": 34.0991398
+      }
+    }
+]
 },
 {
   "popularity": 21.678,
@@ -368,10 +380,17 @@ const movie = [{
   "release_date": "1997-12-20",
   "location": [{
     "coordinates": {
-      "lng": -82.5027542,
-      "lat": 40.7864823,
+      "lng": 11.8345976,
+      "lat": 43.4431156,
     }
-  }]
+  },
+    {
+      "coordinates": {
+        "lng": 11.986128,
+        "lat": 43.2748524,
+      }
+    }
+]
 },
 {
   "popularity": 30.974,
@@ -394,10 +413,17 @@ const movie = [{
   "release_date": "1994-07-06",
   "location": [{
     "coordinates": {
-      "lng": -82.5027542,
-      "lat": 40.7864823,
+      "lng": -81.0944193,
+      "lat": 32.0758858,
     }
-  }]
+  },
+    {
+      "coordinates": {
+        "lng": -81.0980366,
+        "lat": 32.8542847,
+      }
+    }
+]
 },
 {
   "popularity": 53.995,
@@ -421,10 +447,29 @@ const movie = [{
   "release_date": "2008-07-16",
   "location": [{
     "coordinates": {
-      "lng": -82.5027542,
-      "lat": 40.7864823,
+      "lng": -87.6809025,
+      "lat": 41.8733985,
     }
-  }]
+  },
+    {
+      "coordinates": {
+        "lng": -87.6323658,
+        "lat": 41.8840586,
+      }
+    },
+    {
+      "coordinates": {
+        "lng": 114.1559423,
+        "lat": 22.2858849,
+      }
+    },
+    {
+      "coordinates": {
+        "lng": -0.136403,
+        "lat": 51.5097637,
+      }
+    }
+]
 },
 {
   "popularity": 19.505,
