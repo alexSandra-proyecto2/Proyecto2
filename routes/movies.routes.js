@@ -31,11 +31,11 @@ router.post('/add', (req, res) => {
   let creator = req.user.username
 
   Movie.create({
-    location,
-    location, 
-    location,
-    creator
-  })
+      location,
+      location,
+      location,
+      creator
+    })
     .then(x => res.redirect('/movies'))
     .catch(err => 'error: ' + err)
 })
