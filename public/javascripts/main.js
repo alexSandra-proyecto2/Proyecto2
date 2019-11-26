@@ -1,3 +1,5 @@
+
+
 function getAllMoviesFromTheAPI(myMap) {
   axios.get("/api")
     .then(response => {
@@ -8,6 +10,8 @@ function getAllMoviesFromTheAPI(myMap) {
 }
 
 function placeMovie(movies, myMap) {
+
+  console.log(movies, "esto estoy pintando")
   movies.forEach(elm => {
 
 
@@ -16,19 +20,19 @@ function placeMovie(movies, myMap) {
         lat: elm.location[i].coordinates.lat,
         lng: elm.location[i].coordinates.lng
       }
-      // const infoMovie = "This is movie xxxxxx"
-      new google.maps.Marker({
+      const infoMovie = '<h4 style="text-align:center">' + elm.title + '</h4><br>' + '<div style="padding:12px"><img src="http://image.tmdb.org/t/p/w185/' + elm.poster_path + '" alt="imagen">'
+      
+      let marker = new google.maps.Marker({
         position: center,
         map: myMap
       })
-      // new google.maps.InfoWindow({
-      //   content: infoMovie
-      // })
+      let infowindow = new google.maps.InfoWindow({
+        content: infoMovie,
+      })
 
-      // google.maps.event.addListener('click', () => {
-      //   console.log("clicky")
-      //   infowindow.open(myMap, marker)
-      // })
+      marker.addListener('click', () => {
+        infowindow.open(myMap, marker)
+      })
     }
   })
 }
@@ -43,14 +47,6 @@ function initMap() {
     }
   })
 
-  // const infoMovie = "This is movie xxxxxx"
-
-  // const infowindow = new google.maps.InfoWindow({
-  //   content: infoMovie
-  // })
-  // google.maps.event.addListener('click', function() {
-  //   infowindow.open(myMap, marker)
-  // })
 
   getAllMoviesFromTheAPI(myMap)
 }
