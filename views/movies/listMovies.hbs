@@ -1,1 +1,46 @@
-<h1>Lista de peliculas</h1>
+
+<div class="container coasters-index">
+  <br>
+  <div class="row">
+    <div class="col-md-4">
+      <h1 style="font-weight: 100">Lista de películas</h1>
+    </div>
+    <div class="col-md-6">
+    </div>
+    <div class="col-md-2">
+      <a href="/movies/{{page}}" class="btn btn-dark">Página siguiente</a>
+    </div>
+  </div>
+  <br>
+
+  {{#each movies}}
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-2">
+      <img src="http://image.tmdb.org/t/p/w185/{{poster_path}}" alt="imagen">
+    </div>
+    <div class="col-md-8">
+      <br><br>
+      <h5><strong>Título: </strong> {{title}}</h5>
+      <p><strong>Descripción: </strong>{{overview}}</p>
+      <p><strong>Calificación:</strong> {{vote_average}}</p>
+      <p><strong>Fecha de lanzamiento:</strong> {{release_date}}</p>
+      <a href="#" class="btn btn-dark">Añadir localización</a>
+      <a href="#" class="btn btn-dark">Añadir a películas pendientes</a>
+      <a href="#" class="btn btn-dark">Marcar como vista</a>
+    </div>
+  </div>
+  <br>
+  {{/each}}
+
+  <div class="row">
+    <div class="col-md-10">
+    </div>
+    <div class="col-md-2">
+      <a href="/movies/{{page}}" class="btn btn-dark">Página siguiente</a>
+    </div>
+  </div>
+  
+
+</div>
