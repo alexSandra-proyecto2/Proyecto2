@@ -10,13 +10,24 @@ class APIHandler {
   getFullList(page) {
     //console.log(`${this.BASE_URL}/movie/top_rated?api_key=5a5668367bc1d3e12a55e3df7da31e9d&language=es-ES&page=${page}`)
     return axios.get(`${this.BASE_URL}/movie/top_rated?api_key=5a5668367bc1d3e12a55e3df7da31e9d&language=es-ES&page=${page}`)
-    .then(responseFromAPI => {
+      .then(responseFromAPI => {
 
-      console.log('Response from API is: ', responseFromAPI.data)
+        console.log('Response from API is: ', responseFromAPI.data)
 
-      return responseFromAPI.data
-    })
+        return responseFromAPI.data
+      })
+  }
+  getMovieByID(movieId) {
+    //https://api.themoviedb.org/3/movie/429?api_key=5a5668367bc1d3e12a55e3df7da31e9d
+    return axios.get(`${this.BASE_URL}/movie/${movieId}?api_key=5a5668367bc1d3e12a55e3df7da31e9d`)
+      .then(responseFromAPI => {
+
+        console.log('Response from API is: ', responseFromAPI.data)
+
+        return responseFromAPI.data
+      })
   }
 }
+
 
 module.exports = APIHandler;

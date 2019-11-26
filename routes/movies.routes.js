@@ -1,9 +1,47 @@
 const express = require('express');
 const router = express.Router();
-//const Movie = require('../models/Movie.model');
+const Movie = require('../models/Movie.model');
 const APIHandler = require('../services/moviesApi.service')
 /* GET home page */
 const moviesAPI = new APIHandler(`https://api.themoviedb.org/3`)
+moviesAPI.getMovieByID(429)
+
+router.get('/add', (req, res, next) => {
+  console.log("click")
+  const movieId = req.query.movieId
+
+  const lamovie = moviesAPI.getMovieByID(movieId)
+
+
+  Movie.create(lamovie)
+    .then(themovie => {
+      res.render('movies/addMovieLocation', {
+        movie: themovie
+      })
+    })
+    .catch(err => console.log("error", err))
+});
+
+router.post('/add', (req, res) => {
+  let location = {
+    type: 'Point',
+    coordinates: [req.body.longitude, req.body.latitude]
+  }
+
+  let creator = req.user.username
+
+  Movie.findOneAndUpdate({
+      id: req.query.movieId
+    }, {
+      location
+    })
+    .then(x => res.redirect('/movies'))
+    .catch(err => 'error: ' + err)
+})
+
+
+
+
 
 
 router.get('/:page', (req, res, next) => {
@@ -18,29 +56,6 @@ router.get('/:page', (req, res, next) => {
     })
     .catch(err => console.log(err, "err full list"))
 })
-
-router.get('/add', (req, res, next) => {
-  res.render('movies/addLocation');
-});
-router.post('/add', (req, res) => {
-  let location = {
-    type: 'Point',
-    coordinates: [req.body.longitude, req.body.latitude]
-  }
-
-  let creator = req.user.username
-
-  Movie.create({
-    location,
-    location, 
-    location,
-    creator
-  })
-    .then(x => res.redirect('/movies'))
-    .catch(err => 'error: ' + err)
-})
-
-
 
 
 
