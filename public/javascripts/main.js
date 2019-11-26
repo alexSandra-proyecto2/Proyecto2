@@ -1,5 +1,3 @@
-
-
 function getAllMoviesFromTheAPI(myMap) {
   axios.get("/api")
     .then(response => {
@@ -21,7 +19,6 @@ function placeMovie(movies, myMap) {
         lng: elm.location[i].coordinates.lng
       }
       const infoMovie = '<h4 style="text-align:center">' + elm.title + '</h4><br>' + '<div style="padding:12px"><img src="http://image.tmdb.org/t/p/w185/' + elm.poster_path + '" alt="imagen">'
-      
       let marker = new google.maps.Marker({
         position: center,
         map: myMap
