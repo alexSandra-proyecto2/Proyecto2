@@ -9,19 +9,27 @@ function getAllMoviesFromTheAPI(myMap) {
 
 function placeMovie(movies, myMap) {
   movies.forEach(elm => {
-    
-  
-      for(let i=0; i<elm.location.length; i++){
-        const center = {
+
+
+    for (let i = 0; i < elm.location.length; i++) {
+      const center = {
         lat: elm.location[i].coordinates.lat,
         lng: elm.location[i].coordinates.lng
       }
+      // const infoMovie = "This is movie xxxxxx"
       new google.maps.Marker({
         position: center,
         map: myMap
-      });
-    }
+      })
+      // new google.maps.InfoWindow({
+      //   content: infoMovie
+      // })
 
+      // google.maps.event.addListener('click', () => {
+      //   console.log("clicky")
+      //   infowindow.open(myMap, marker)
+      // })
+    }
   })
 }
 
@@ -34,6 +42,15 @@ function initMap() {
       lng: 2.190471916
     }
   })
+
+  // const infoMovie = "This is movie xxxxxx"
+
+  // const infowindow = new google.maps.InfoWindow({
+  //   content: infoMovie
+  // })
+  // google.maps.event.addListener('click', function() {
+  //   infowindow.open(myMap, marker)
+  // })
 
   getAllMoviesFromTheAPI(myMap)
 }

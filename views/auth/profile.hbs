@@ -1,1 +1,37 @@
-<h1>vista del perfil</h1>
+<h1>Perfil</h1>
+
+<div id="ProfilePage">
+  <div id="LeftCol">
+    <div id="Photo">
+
+    </div>
+    <div id="ProfileOptions">
+  
+    </div>
+  </div>
+
+  <div id="Info">
+    {{!-- {{#each user}} --}}
+    <br>
+    <div class='form-group'>
+      <label for='profile-picture'>Imagen:</label>
+      <input name='imgFile' type='file' id='profile-picture'>
+    </div>
+    <br>
+    <p>
+      <strong>Userame:</strong>
+      <span>{{Userame}}</span>
+    </p>
+    <br>
+    <p>
+      <strong>Email:</strong>
+      <span>{{email}}</span>
+    </p>
+    <br>
+    <a href="#" class="btn btn-dark">Editar Perfil </a>
+
+    {{!-- {{/each}} --}}
+  </div>
+
+  <!-- Needed because other elements inside ProfilePage have floats -->
+</div>
