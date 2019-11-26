@@ -8,10 +8,35 @@
     <div class="col-md-6">
     </div>
     <div class="col-md-2">
-      <a href="#" class="btn btn-dark">Añadir un evento</a>
+      <a href="events/add" class="btn btn-dark">Añadir un evento</a>
     </div>
   </div>
   <br>
+
+  {{#each event}}
+  <div class="row">
+    <div class="col-md-6">
+      <br><br>
+      <h5><strong>Nombre del evento: </strong> {{name}}</h5>
+      <p><strong>Día del evento: </strong>{{date}}</p>
+      <p><strong>Descripción del envento:</strong> {{description}}</p>
+      <p><strong>Creador del evento:</strong> {{creator}}</p>
+      <p><strong>Tipo de evento:</strong> {{type}}</p>
+      <a href="#" class="btn btn-dark">Unirme al evento</a>
+      <a href="/events/edit?eventId={{_id}}" class="btn btn-dark">Modificar evento</a>
+      <a href="/events/delete?eventId={{_id}}" class="btn btn-dark">Borrar evento</a>
+      
+
+
+    </div>
+
+  </div>
+  {{!-- <p>Nombre: <a href="/event/list/{{this._id}}">{{this.name}}</a>
+    (<a href="/event/edit?eventId={{this._id}}"> Editar</a> | <a href="/event/delete?eventId={{this._id}}">
+      Borrar</a>)</p> --}}
+
+  {{/each}}
+
 
   {{!-- {{#each movies}}
   <div class="row">
