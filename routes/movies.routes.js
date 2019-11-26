@@ -19,6 +19,34 @@ router.get('/:page', (req, res, next) => {
     .catch(err => console.log(err, "err full list"))
 })
 
+router.get('/add', (req, res, next) => {
+  res.render('movies/addLocation');
+});
+router.post('/add', (req, res) => {
+  let location = {
+    type: 'Point',
+    coordinates: [req.body.longitude, req.body.latitude]
+  }
+
+  let creator = req.user.username
+
+  Movie.create({
+    location,
+    location, 
+    location,
+    creator
+  })
+    .then(x => res.redirect('/movies'))
+    .catch(err => 'error: ' + err)
+})
+
+
+
+
+
+
+
+
 //moviesAPI.getFullList(page)
 //axios.get("https: //api.themoviedb.org/3/"
 // .then(response => {
