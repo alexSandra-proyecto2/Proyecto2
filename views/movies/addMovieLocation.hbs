@@ -13,7 +13,7 @@
           <label for="field1">Address: </label>
           <input type="text" name="address" placeholder="address" class="form-control">
         </div>
-
+        {{!-- onClick="mapa.getCoords()" --}}
         <button type="submit" class="btn btn-dark">Añadir localizaciones</button>
       </form>
     </div>
@@ -21,3 +21,10 @@
   </div>
 </div>
 {{/with}}
+
+<figure style='width:0;height:0' id="map"></figure>
+</div>
+
+<script src="../javascripts/addMovie.js"></script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDG88rK2sVwRDbZIJautuIZpNt32kAQpSU&callback=initMap"></script>

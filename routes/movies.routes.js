@@ -10,16 +10,18 @@ router.get('/add', (req, res, next) => {
   console.log("click")
   const movieId = req.query.movieId
 
-  const lamovie = moviesAPI.getMovieByID(movieId)
-
-
-  Movie.create(lamovie)
-    .then(themovie => {
-      res.render('movies/addMovieLocation', {
-        movie: themovie
+  moviesAPI.getMovieByID(movieId)
+    .then(lamovie => {
+      console.log("----->", lamovie)
+      
+      Movie.create(lamovie)
+      .then(themovie => {
+        res.render('movies/addMovieLocation', {
+          movie: themovie
+        })
       })
+      .catch(err => console.log("error", err))
     })
-    .catch(err => console.log("error", err))
 });
 
 router.post('/add', (req, res) => {

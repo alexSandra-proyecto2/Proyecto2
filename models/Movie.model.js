@@ -3,7 +3,10 @@ const Schema = mongoose.Schema;
 
 const movieSchema = new Schema({
   //TIENE QUE SER COMO ESTA EN LA API
-  id: Number,
+  id: {
+    type: Number,
+    unique: true
+  },
   title: String,
   overview: String,
   vote_average: Number,

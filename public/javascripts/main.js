@@ -43,59 +43,9 @@ function initMap() {
       lng: 2.190471916
     }
   })
-  //let geocoder = new google.maps.Geocoder();
+  // let geocoder = new google.maps.Geocoder();
+
+  // geocodeAddress(geocoder, "Calle Serrano 14, Madrid")
   getAllMoviesFromTheAPI(myMap)
 
 }
-
-function geocodeAddress() {
-  var address = document.getElementById('address').value;
-  geocoder.geocode({
-    'address': address
-  }, function (results, status) {
-    if (status === 'OK') {
-      //myMap.setCenter(results[0].geometry.location);
-      latitud = results[0].geometry.location.lat()
-      longitud = results[0].geometry.location.lng();
-      // var marker = new google.maps.Marker({
-      //   map: myMap,
-      //   position: results[0].geometry.location
-      // });
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-
-  })
-
-}
-
-
-
-// //CONSEGUIR LAS LONGITUDES
-// latitud = results[0].geometry.location.lat()
-// longitud = results[0].geometry.location.lng();
-
-// getAllMoviesFromTheAPI(geocoder, myMap)
-
-//para el formulario
-//  document.getElementById('submit').addEventListener('click', function () {
-//    geocodeAddress(geocoder, map);
-//  });
-
-
-// function geocodeAddress(geocoder, resultsMap) {
-//   var address = document.getElementById('address').value;
-//   geocoder.geocode({
-//     'address': "Calle Miguel Angel Asturias, San Fernando de Henares"
-//   }, function (results, status) {
-//     if (status === 'OK') {
-//       resultsMap.setCenter(results[0].geometry.location);
-//       var marker = new google.maps.Marker({
-//         map: resultsMap,
-//         position: results[0].geometry.location
-//       });
-//     } else {
-//       alert('Geocode was not successful for the following reason: ' + status);
-//     }
-//   });
-// }
