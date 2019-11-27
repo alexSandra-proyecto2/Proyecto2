@@ -21,17 +21,15 @@ router.get('/', (req, res, next) => {
 router.get('/add', (req, res, next) => {
   res.render('events/addEvent');
 });
+
+
 router.post('/add', (req, res) => {
-  let location = {
-    type: 'Point',
-    coordinates: [req.body.longitude, req.body.latitude]
-  }
-  const {
-    name,
-    date,
-    description,
-    type,
-  } = req.body
+  const location = req.body.location
+  const name = req.body.name
+  const date = req.body.date
+  const description = req.body.description
+  const type = req.body.type
+  console.log(req.body)
 
   let creator = req.user.username
 
