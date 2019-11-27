@@ -9,7 +9,7 @@ function getAllMoviesFromTheAPI(myMap) {
 
 function placeMovie(movies, myMap) {
 
-  console.log(movies, "esto estoy pintando")
+  //console.log(movies, "esto estoy pintando")
   movies.forEach(elm => {
 
 
@@ -25,10 +25,12 @@ function placeMovie(movies, myMap) {
       })
       let infowindow = new google.maps.InfoWindow({
         content: infoMovie,
+        closeOnMapClick: true,
+        shadow: true,
       })
 
-      marker.addListener('mouseover', () => {
-        infowindow.open(myMap, marker)
+      marker.addListener('click', () => {
+        infowindow.open(myMap, marker) 
       })
     }
   })
@@ -42,7 +44,6 @@ function initMap() {
       lat: 41.3977381,
       lng: 2.190471916
     },
-    
   })
   // let geocoder = new google.maps.Geocoder();
 

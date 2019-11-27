@@ -21,8 +21,8 @@ router.get('/add', (req, res, next) => {
         })
         .catch(err => {
           Movie.findOne({
-              id: movieId
-            })
+            id: movieId
+          })
             .then(themovie => {
               res.render('movies/addMovieLocation', {
                 movie: themovie
@@ -49,7 +49,7 @@ router.post('/add', (req, res) => {
   //   }
   // }]
 
-  
+
   // let creator = req.user.username
   // Movie.findOneAndUpdate({
   //     id: req.query.movieId
@@ -59,7 +59,6 @@ router.post('/add', (req, res) => {
   //   .then(x => res.redirect('/movies'))
   //   .catch(err => 'error: ' + err)
 })
-
 
 
 
