@@ -1,6 +1,7 @@
 function getAllMoviesFromTheAPI(myMap) {
   axios.get("/api")
     .then(response => {
+      console.log(response.data, response.data.movies, response.data.event)
       placeMovie(response.data.movies, myMap)
 
     })
@@ -42,11 +43,50 @@ function initMap() {
       lat: 41.3977381,
       lng: 2.190471916
     },
-    
+
   })
   // let geocoder = new google.maps.Geocoder();
 
   // geocodeAddress(geocoder, "Calle Serrano 14, Madrid")
   getAllMoviesFromTheAPI(myMap)
+  getAllEventFromTheAPI(myMap)
 
+}
+
+function getAllEventFromTheAPI(myMap) {
+  axios.get("/api/events")
+    .then(response => {
+      console.log(response.data.event)
+      placeEvent(response.data.event, myMap)
+
+    })
+    .catch(error => console.log(error))
+}
+
+function placeEvent(event, myMap) {
+
+  console.log(event, "esto estoy pintando de events")
+  event.forEach(elm => {
+    console.log("la lat", elm.location.coordinates.lat)
+
+    //for (let i = 0; i < elm.location.length; i++) {
+
+    const center = {
+      lat: elm.location.coordinates.lat,
+      lng: elm.location.coordinates.lng
+    }
+    const infoEvent = '<h4 style="text-align:center">' + elm.name + '</h4>'
+    let marker = new google.maps.Marker({
+      position: center,
+      map: myMap
+    })
+    let infowindow = new google.maps.InfoWindow({
+      content: infoEvent,
+    })
+
+    marker.addListener('mouseover', () => {
+      infowindow.open(myMap, marker)
+    })
+    //}
+  })
 }

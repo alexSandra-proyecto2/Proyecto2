@@ -39,25 +39,21 @@ router.get('/add', (req, res, next) => {
 
 
 router.post('/add', (req, res) => {
-  // location: [{
-  //   type: {
-  //     type: String,
-  //   },
-  //   coordinates: {
-  //     lng: Number,
-  //     lat: Number
-  //   }
-  // }]
 
-  
-  // let creator = req.user.username
-  // Movie.findOneAndUpdate({
-  //     id: req.query.movieId
-  //   }, {
-  //     location
-  //   })
-  //   .then(x => res.redirect('/movies'))
-  //   .catch(err => 'error: ' + err)
+  console.log(req.body, "soy el req body y no soy null")
+
+  console.log(req.body.movieId)
+  Movie.findOneAndUpdate({
+      id: req.body.movieId
+    }, {
+      $push: {
+        location: req.body.location
+      }
+    })
+    .then(x => {
+      res.redirect('/movies')
+    })
+    .catch(err => 'error: ' + err)
 })
 
 
@@ -79,7 +75,20 @@ router.get('/:page', (req, res, next) => {
 })
 
 
-
+router.get('/pending', (req, res) => {
+  const movieId = req.query.movieId
+  //console.log('--------------------------', movieId)
+  User.findOneAndUpdate(req.user, {
+      movieId
+    })
+    .populate('movie')
+    .then(pendMovie => {
+      res.render('auth/pendingMovies', {
+        lamovie: pendMovie
+      })
+    })
+    .catch(err => console.log(err))
+})
 
 
 

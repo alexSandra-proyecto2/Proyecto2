@@ -12,7 +12,10 @@ const eventSchema = new Schema({
     type: {
       type: String
     },
-    coordinates: [Number]
+    coordinates: {
+      lng: Number,
+      lat: Number
+    }
   }
 }, {
   timestamps: {
