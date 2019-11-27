@@ -1,34 +1,27 @@
-function geocodeAddress(geocoder, address) {
+/*
+Cuando pulse boton coger info 
+convertir info
+enviar info a back
+*/
 
-  geocoder.geocode({
-    address
-  }, function (results, status) {
-    if (status === 'OK') {
-      //myMap.setCenter(results[0].geometry.location);
-      latitud = results[0].geometry.location.lat()
-      longitud = results[0].geometry.location.lng();
-      console.log(latitud, longitud, "socorro")
-      // var marker = new google.maps.Marker({
-      //   map: myMap,
-      //   position: results[0].geometry.location
-      // });
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
 
-  })
 
-}
+// function myFunction() {
+//   let dir = document.getElementById('direccion').value
+//   console.log(dir)
 
-function initMap() {
-  const myMap = new google.maps.Map(document.getElementById('map'), {
-    zoom: 3,
-    center: {
-      lat: 41.3977381,
-      lng: 2.190471916
-    }
-  })
-  let geocoder = new google.maps.Geocoder();
 
-  geocodeAddress(geocoder, "Calle Serrano 14, Madrid")
-}
+// }
+document.getElementById('direccion').addEventListener("click", (event) => {
+  event.preventDefault()
+  let dir = document.getElementById('dirInput').value
+  console.log(dir)
+  getAddress(dir)
+    .then(responseFromAPI => {
+      let lat = responseFromAPI.results[0].geometry.location.lat
+      let lng = responseFromAPI.results[0].geometry.location.lng
+      console.log(lat, lng)
+    })
+
+
+});

@@ -5,7 +5,8 @@ const movieSchema = new Schema({
   //TIENE QUE SER COMO ESTA EN LA API
   id: {
     type: Number,
-    unique: true
+    unique: true,
+    required: true,
   },
   title: String,
   overview: String,
