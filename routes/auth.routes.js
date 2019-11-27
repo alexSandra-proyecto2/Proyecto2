@@ -77,10 +77,24 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-router.get("/profile", (req, res) => {
-  res.render("auth/profile");
+router.get('/profile', ensureAuthenticated, (req, res) => {
+  res.render('auth/profile', { user: req.user });
 });
 
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    res.redirect('/login')
+  }
+}
+
+router.get('/profile/pending', ensureAuthenticated, (req, res) => {
+  res.render('auth/pendingMovies', { user: req.user });
+});
+router.get('/profile/seen', ensureAuthenticated, (req, res) => {
+  res.render('auth/seenMovies', { user: req.user });
+});
 
 
 module.exports = router;

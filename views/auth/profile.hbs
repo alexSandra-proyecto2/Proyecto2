@@ -1,37 +1,29 @@
-<h1>Perfil</h1>
-
-<div id="ProfilePage">
-  <div id="LeftCol">
-    <div id="Photo">
-
+<div class="container">
+  <br>
+  <div class="row">
+    <div class="col-md-4">
+      {{#with user}}
+      <h1 style="font-weight: 100">Perfíl de {{username}}</h1>
+      {{/with}}
     </div>
-    <div id="ProfileOptions">
+    <div class="col-md-8">
+    </div>
+  </div>
+  <br>
+  {{#with user}}
+    <div class="row">
+      <div class="col-md-6">
+        <br><br>
+        <p><strong>Userame:</strong>{{username}}</p>
+        <br>
+        <p><strong>Email:</strong>{{email}}</p>
+        <br>
+        <a href="#" class="btn btn-dark">Editar Perfil </a>
+        <a href="/auth/profile/pending" class="btn btn-dark">Películas pendientes </a>
+        <a href="/auth/profile/seen" class="btn btn-dark">Películas vistas</a>
+      </div>
+    </div>
+  {{/with}}
+
   
-    </div>
-  </div>
-
-  <div id="Info">
-    {{!-- {{#each user}} --}}
-    <br>
-    {{!-- <div class='form-group'>
-      <label for='profile-picture'>Imagen:</label>
-      <input name='imgFile' type='file' id='profile-picture'>
-    </div> --}}
-    <br>
-    <p>
-      <strong>Userame:</strong>
-      <span>{{Userame}}</span>
-    </p>
-    <br>
-    <p>
-      <strong>Email:</strong>
-      <span>{{email}}</span>
-    </p>
-    <br>
-    <a href="#" class="btn btn-dark">Editar Perfil </a>
-
-    {{!-- {{/each}} --}}
-  </div>
-
-  <!-- Needed because other elements inside ProfilePage have floats -->
 </div>

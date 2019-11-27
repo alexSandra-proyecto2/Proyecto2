@@ -18,7 +18,7 @@ function placeMovie(movies, myMap) {
         lat: elm.location[i].coordinates.lat,
         lng: elm.location[i].coordinates.lng
       }
-      const infoMovie = '<h4 style="text-align:center">' + elm.title + '</h4><br>' + '<div style="padding:12px"><img src="http://image.tmdb.org/t/p/w185/' + elm.poster_path + '" alt="imagen">'
+      const infoMovie = '<h4 style="text-align:center">' + elm.title + '</h4><br>' + '<div style="padding:0 12px"><img src="http://image.tmdb.org/t/p/w185/' + elm.poster_path + '" alt="imagen"><br><a href="#" style="margin-top:10px" class="btn btn-dark"> Añadir a pendientes</a><br><a href="#" style="margin-top:10px" class="btn btn-dark"> Añadir a vistas</a>'
       let marker = new google.maps.Marker({
         position: center,
         map: myMap
@@ -27,7 +27,7 @@ function placeMovie(movies, myMap) {
         content: infoMovie,
       })
 
-      marker.addListener('click', () => {
+      marker.addListener('mouseover', () => {
         infowindow.open(myMap, marker)
       })
     }
@@ -41,7 +41,8 @@ function initMap() {
     center: {
       lat: 41.3977381,
       lng: 2.190471916
-    }
+    },
+    
   })
   // let geocoder = new google.maps.Geocoder();
 
