@@ -48,8 +48,8 @@ router.post('/add', (req, res) => {
 
   console.log(req.body.movieId)
   Movie.findOneAndUpdate({
-    id: req.body.movieId
-  }, {
+      id: req.body.movieId
+    }, {
       $push: {
         location: req.body.location
       }
@@ -67,14 +67,33 @@ router.get('/pending', (req, res, next) => {
   moviesAPI.getMovieByID(movieId)
     .then(lamovie => {
       console.log("----->", lamovie)
+      console.log(req.user.email)
 
-      User.findOneAndUpdate(req.user, { $push: { pending: movieId } })
-        .then(info => {
-          console.log(info)
+      Movie.findOneAndUpdate(lamovie.id, lamovie, {
+          upsert: true
         })
-        .catch(err => 'error: ' + err)
+        .then(movieCreated => {
+          console.log("*******", movieCreated, "la movie creade en db")
+          User.findOneAndUpdate({
+            email: req.user.email
+          }, {
+            $push: {
+              pending: movieCreated._id
+            }
+          })
+          console.log("---------------------")
+            .then(info => {
+              console.log(info)
+            })
+            .catch(err => 'error: ' + err)
+        })
+        .catch(err => console.log(err, "find and update"))
+
     })
+    .catch(err => console.log(err, "getmovie from api"))
 });
+
+
 
 
 //Yo la ultima, que si no entro siempre
