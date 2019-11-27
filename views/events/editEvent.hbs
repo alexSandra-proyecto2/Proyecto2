@@ -3,12 +3,12 @@
   <div class="row">
 
     <div class="col-md-6">
-      <h1 style="font-weight: 100">Editar un evento {{name}}</h1>
+      <h1 style="font-weight: 100">Editar el evento: <br> <strong>{{name}}</strong> </h1>
     </div>
 
 
     <div class="col-md-6">
-
+      <p id="eventId" event={{_id}}></p>
       <form action="/events/edit?eventId={{_id}}" method="post">
         <div class="form-group">
           <label for="name-input">Nombre del evento</label>
@@ -26,19 +26,12 @@
           <label for="type-input">Tipo de evento</label>
           <input name="type" type="text" class="form-control" id="type-input" value="{{type}}">
         </div>
-        <div>
-          <h6>Lugar del evento</h6>
-        </div>
         <div class="form-group">
-          <label for="field3">Latitud: </label>
-          <input type="text" name="latitude" placeholder="latitude" class="form-control" value="{{latitude}}">
-        </div>
-        <div class=" form-group">
-          <label for="field4">Longitud: </label>
-          <input type="text" name="longitude" placeholder="longitude" class="form-control" value="{{longitude}}">
+          <label for="dirInput2">Dirección: </label>
+          <input type="text" id="dirInput2" name="address" value="{{address}}" class="form-control">
         </div>
 
-        <button type="submit" class="btn btn-dark">Guardar el cambio</button>
+        <button type="submit" class="btn btn-dark" id="guardacambio">Guardar el cambio</button>
         <a href="/events" class="btn btn-dark">Volver</a>
 
       </form>
@@ -46,3 +39,7 @@
 
   </div>
 </div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="../javascripts/GoogleAPIHandler.js"></script>
+<script src="../javascripts/editEventLocation.js"></script>

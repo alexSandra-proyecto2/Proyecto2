@@ -15,13 +15,16 @@ document.getElementById('direccion').addEventListener("click", (event) => {
       let lng = responseFromAPI.results[0].geometry.location.lng
       console.log(lat, lng)
 
-      axios.post('/movies/add', { movieId:movieId, location: {
-        type: "Point",
-        coordinates: {
-          lng,
-          lat
+      axios.post('/movies/add', {
+        movieId: movieId,
+        location: {
+          type: "Point",
+          coordinates: {
+            lng,
+            lat
+          }
         }
-      }})
+      }).then(x => window.location.href = "http://localhost:3000/movies/1")
 
 
     })

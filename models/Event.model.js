@@ -8,6 +8,7 @@ const eventSchema = new Schema({
   creator: String, //de modelo CAMBIAR
   assistants: String, //de modelo CAMBIAR
   type: String,
+  address: String,
   location: {
     type: {
       type: String
