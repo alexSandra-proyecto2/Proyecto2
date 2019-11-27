@@ -68,18 +68,16 @@ function placeEvent(event, myMap) {
 
   console.log(event, "esto estoy pintando de events")
   event.forEach(elm => {
-    console.log("la lat", elm.location.coordinates.lat)
-
-    //for (let i = 0; i < elm.location.length; i++) {
 
     const center = {
       lat: elm.location.coordinates.lat,
       lng: elm.location.coordinates.lng
     }
-    const infoEvent = '<h4 style="text-align:center">' + elm.name + '</h4>'
+    const infoEvent = '<h4 style="text-align:center">Título: ' + elm.name + '</h4>' + '<br> <p>Día del evento: ' + elm.date + '</p> <br> <p>Descripción: ' + elm.description + '</p>'
     let marker = new google.maps.Marker({
       position: center,
       map: myMap,
+      icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
     })
     let infowindow = new google.maps.InfoWindow({
       content: infoEvent,

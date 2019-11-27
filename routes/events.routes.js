@@ -10,6 +10,7 @@ const Event = require('../models/Event.model');
 router.get('/', (req, res, next) => {
   Event.find()
     .then(allevents => {
+      console.log('holiiiiii')
       res.render('events/listEvents', {
         event: allevents
       })
@@ -29,6 +30,7 @@ router.post('/add', (req, res) => {
   const date = req.body.date
   const description = req.body.description
   const type = req.body.type
+  const address = req.body.address
   console.log(req.body)
 
   let creator = req.user.username
@@ -39,9 +41,13 @@ router.post('/add', (req, res) => {
       description,
       creator,
       type,
-      location
+      location,
+      address
     })
-    .then(x => res.redirect('/events'))
+    .then(x => {
+      console.log(x)
+      res.json(x)
+    })
     .catch(err => 'error: ' + err)
 })
 
@@ -55,20 +61,26 @@ router.get('/edit', (req, res) => {
 
 
 router.post('/edit', (req, res) => {
-  const {
-    name,
-    date,
-    description,
-    type
-  } = req.body
+  console.log(req.body, "req.bdy en edit")
+  const location = req.body.location
+  const name = req.body.name
+  const date = req.body.date
+  const description = req.body.description
+  const type = req.body.type
+  const address = req.body.address
 
-  Event.findByIdAndUpdate(req.query.eventId, {
+  Event.findByIdAndUpdate(req.body.eventId, {
       name,
       date,
       description,
-      type
+      type,
+      location,
+      address
     })
-    .then(() => res.redirect(`/events`))
+    .then(x => {
+      console.log(x, "update")
+      // res.json(x)
+    })
     .catch(err => console.log(err))
 })
 

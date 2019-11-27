@@ -25,8 +25,8 @@ router.get('/add', (req, res, next) => {
         })
         .catch(err => {
           Movie.findOne({
-            id: movieId
-          })
+              id: movieId
+            })
             .then(themovie => {
               res.render('movies/addMovieLocation', {
                 movie: themovie
