@@ -1,8 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const Movie = require('../models/Movie.model');
+const User = require('../models/User.model');
 const APIHandler = require('../services/moviesApi.service')
 const moviesAPI = new APIHandler(`https://api.themoviedb.org/3`)
+
+////////////////////
+const pendMovie = require('../models/Movie.model')
 
 router.get('/add', (req, res, next) => {
   console.log("click")
@@ -44,27 +48,41 @@ router.post('/add', (req, res) => {
 
   console.log(req.body.movieId)
   Movie.findOneAndUpdate({
-      id: req.body.movieId
-    }, {
+    id: req.body.movieId
+  }, {
       $push: {
         location: req.body.location
       }
     })
     .then(x => {
-      res.redirect('/movies')
+      res.json(x)
     })
     .catch(err => 'error: ' + err)
 })
 
 
+router.get('/pending', (req, res, next) => {
+  const movieId = req.query.movieId
+
+  moviesAPI.getMovieByID(movieId)
+    .then(lamovie => {
+      console.log("----->", lamovie)
+
+      User.findOneAndUpdate(req.user, { $push: { pending: movieId } })
+        .then(info => {
+          console.log(info)
+        })
+        .catch(err => 'error: ' + err)
+    })
+});
 
 
-
+//Yo la ultima, que si no entro siempre
 router.get('/:page', (req, res, next) => {
   //Movie.find()
   moviesAPI.getFullList(req.params.page++)
     .then(allmovies => {
-      console.log(allmovies, "allmovies!")
+      //console.log(allmovies, "allmovies!")
       res.render('movies/listMovies', {
         movies: allmovies.results,
         page: req.params.page++
@@ -72,37 +90,6 @@ router.get('/:page', (req, res, next) => {
     })
     .catch(err => console.log(err, "err full list"))
 })
-
-
-router.get('/pending', (req, res) => {
-  const movieId = req.query.movieId
-  //console.log('--------------------------', movieId)
-  User.findOneAndUpdate(req.user, {
-      movieId
-    })
-    .populate('movie')
-    .then(pendMovie => {
-      res.render('auth/pendingMovies', {
-        lamovie: pendMovie
-      })
-    })
-    .catch(err => console.log(err))
-})
-
-
-
-//moviesAPI.getFullList(page)
-//axios.get("https: //api.themoviedb.org/3/"
-// .then(response => {
-//   const {
-//     title,
-//     overview
-//   } = response.data
-//   document.getElementsByClassName('title')[0].value = title
-//   document.getElementsByClassName('overview')[0].value = overview
-
-//     .catch(err => console.log(err))
-// })
 
 
 

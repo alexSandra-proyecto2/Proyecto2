@@ -6,7 +6,7 @@ class GoogleAPIHandler {
     return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}=AIzaSyDG88rK2sVwRDbZIJautuIZpNt32kAQpSU`)
       .then(responseFromAPI => {
 
-        console.log('Response from API is: ', responseFromAPI.data)
+        //console.log('Response from API is: ', responseFromAPI.data)
 
         return responseFromAPI.data
       })

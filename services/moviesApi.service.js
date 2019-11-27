@@ -12,7 +12,7 @@ class APIHandler {
     return axios.get(`${this.BASE_URL}/movie/popular?api_key=5a5668367bc1d3e12a55e3df7da31e9d&language=es-ES&page=${page}`)
       .then(responseFromAPI => {
 
-        console.log('Response from API is: ', responseFromAPI.data)
+        //console.log('Response from API is: ', responseFromAPI.data)
 
         return responseFromAPI.data
       })
@@ -22,7 +22,7 @@ class APIHandler {
     return axios.get(`${this.BASE_URL}/movie/${movieId}?api_key=5a5668367bc1d3e12a55e3df7da31e9d&language=es-ES`)
       .then(responseFromAPI => {
 
-        console.log('Response from API is: ', responseFromAPI.data)
+        //console.log('Response from API is: ', responseFromAPI.data)
 
         return responseFromAPI.data
       })

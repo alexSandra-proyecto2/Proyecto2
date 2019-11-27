@@ -79,7 +79,7 @@ function placeEvent(event, myMap) {
     const infoEvent = '<h4 style="text-align:center">' + elm.name + '</h4>'
     let marker = new google.maps.Marker({
       position: center,
-      map: myMap
+      map: myMap,
     })
     let infowindow = new google.maps.InfoWindow({
       content: infoEvent,
