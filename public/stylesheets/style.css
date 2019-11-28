@@ -12,12 +12,21 @@ a {
 /*# sourceMappingURL=style.css.map */
 
 #map {
-  height: 650px
+  height: 675px
 }
 
+/* ---------------- Movies ---------------- */
+
 .movies-index {
- background-color:  #062231;
+  /* background-color:  #252f3e; */
+  background-image: linear-gradient(to right,#252f3e , #3D5A80);
+
 }
+
+.movies-header {
+  padding: 30px 0;
+}
+
 .next-btn {
   align-items: flex-end;
 }
@@ -27,10 +36,11 @@ a {
 }
 
 .containerMovies {
-  background-color: #535D5D;
+  background-color: #9fb5c7;
   display: flex;
   height: 320px;
-  color: #E1E3E2;
+  color: #404040;
+  /* color: #E1E3E2; */
 }
 .image-movies {
   width: 30%;
@@ -38,7 +48,9 @@ a {
 .img-movie {
   display: block;
   margin: 0 auto;
-  margin-top: 10px;
+  margin-top: 22px;
+  box-shadow: 5px 5px 5px #808080;
+  
 }
 .card-body {
   width: 60%;
