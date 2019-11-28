@@ -3,8 +3,9 @@ const router = express.Router();
 const Movie = require('../models/Movie.model');
 const Event = require('../models/Event.model');
 /* GET home page */
+
 router.get('/', (req, res, next) => {
-  res.render('index');
+  res.render('index', { user: req.user });
 });
 
 router.get('/api/events', (req, res, next) => {

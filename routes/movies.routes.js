@@ -77,9 +77,9 @@ router.get('/pending', ensureAuthenticated, (req, res, next) => {
 
   moviesAPI.getMovieByID(movieId)
     .then(lamovie => {
-      console.log("----->", lamovie)
-      console.log(req.user.email)
-      console.log("la movie id", lamovie.id)
+      // console.log("----->", lamovie)
+      // console.log(req.user.email)
+      // console.log("la movie id", lamovie.id)
       Movie.findOneAndUpdate({
           id: lamovie.id
         }, lamovie, {
@@ -112,6 +112,7 @@ router.get('/pending', ensureAuthenticated, (req, res, next) => {
 
     })
     .catch(err => console.log(err, "getmovie from api"))
+
 })
 
 
