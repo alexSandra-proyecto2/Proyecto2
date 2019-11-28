@@ -1,9 +1,12 @@
 body {
   font: 14px "Roboto", Helvetica, Arial, sans-serif;
-
 }
 .navbar {
   font: 14px "Altasi", Helvetica, Arial, sans-serif;
+}
+
+.btn-dark {
+  background-color: #082E42;
 }
 
 a {
@@ -12,4 +15,32 @@ a {
 
 #map {
   height: 650px
+}
+.movies-index {
+ background-color:  #062231;
+}
+.movies-header {
+  padding-top: 30x;
+}
+
+
+.containerMovies {
+  background-color:  #535D5D;
+  display: flex;
+  height: 320px;
+  color: #E1E3E2;
+}
+.image-movies {
+  width: 30%;
+}
+.img-movie {
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.card-body {
+  width: 60%;
+}
+.description-movies {
+  height: 120px;
 }

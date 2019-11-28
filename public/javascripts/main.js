@@ -154,6 +154,8 @@ function placeEvent(event, myMap) {
       lng: elm.location.coordinates.lng
     }
     const infoEvent = '<h4 style="text-align:center">Título: ' + elm.name + '</h4>' + '<br> <p>Día del evento: ' + elm.date + '</p> <br> <p>Descripción: ' + elm.description + '</p>'
+    
+
     let marker = new google.maps.Marker({
       position: center,
       map: myMap,

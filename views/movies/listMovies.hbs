@@ -1,98 +1,39 @@
-<div class="container coasters-index">
-  <br>
-  <div class="row">
-    <div class="col-md-4">
-      <h1 style="font-weight: 100">Lista de películas</h1>
-    </div>
-    <div class="form-group col-md-6">
-      {{!-- <label for="film">Pelicula que desea buscar</label>
-      <input name="film" type="text" class="form-control" id="name-input"> --}}
-    </div>
-    <div class="col-md-2">
-      <a href="/movies/{{page}}" class="btn btn-dark">Página siguiente</a>
-    </div>
-  </div>
-  <br>
-
-  {{#each movies}}
-  <div class="row">
-    <div class="col-md-1">
-    </div>
-    <div class="col-md-2">
-      <img src="http://image.tmdb.org/t/p/w185/{{poster_path}}" alt="imagen">
-    </div>
-    <div class="col-md-1">
-    </div>
-    <div class="col-md-8">
+<!-- index.hbs -->
+<div class="movies-index">
+  <div class="container">
+    <div class="info-page row movies-header">
+      <div class="col-md-4">
       <br><br>
-      <h5><strong>Título: </strong> {{title}}</h5>
-      <p><strong>Descripción: </strong>{{overview}}</p>
-      <p><strong>Calificación:</strong> {{vote_average}}</p>
-      <p><strong>Fecha de lanzamiento:</strong> {{release_date}}</p>
-      <a href="/movies/add?movieId={{id}}" class="btn btn-dark">Añadir localización</a>
-      <a href="/movies/pending?movieId={{id}}" class="btn btn-dark">Añadir a películas pendientes</a>
-      <a href="/movies/shown?movieId={{id}}" class="btn btn-dark">Marcar como vista</a>
+      <h1 style="font-weight: 100; color:#E1E3E2">Lista de películas</h1>
+      <br><br>
+      </div>
+      <div class="col-md-6">
+      </div>
+      <div class="col-md-2">
+       <br><br>
+      <a href="/movies/{{page}}" class="btn btn-dark next-btn"style="align-items-right">Página siguiente</a>
+      <br><br>
     </div>
-  </div>
-  <br>
-  {{/each}}
+    </div>
 
-  <div class="row">
-    <div class="col-md-10">
+    {{#each movies}}
+    <div class="containerMovies">
+      <div class="image-movies">
+        <img src="http://image.tmdb.org/t/p/w185/{{poster_path}}" alt="imagen" class="img-movie">
+      </div>
+      <div class="card-body">
+        <h5><strong>Título: </strong> {{title}}</h5>
+        <p class="description-movies"><strong>Descripción: </strong>{{overview}}</p>
+        <p><strong>Calificación:</strong> {{vote_average}}</p>
+        <p><strong>Fecha de lanzamiento:</strong> {{release_date}}</p>
+        <a href="/movies/add?movieId={{id}}" class="btn btn-dark">Añadir localización</a>
+        <a href="/movies/pending?movieId={{id}}" class="btn btn-dark">Pendiente</a>
+        <a href="/movies/shown?movieId={{id}}" class="btn btn-dark">Vista</a>
+      </div>
     </div>
-    <div class="col-md-2">
-      <a href="/movies/{{page}}" class="btn btn-dark">Página siguiente</a>
-    </div>
+    {{/each}}
   </div>
 
+  <a href="/movies/{{page}}" class="btn btn-dark">Página siguiente</a>
 
 </div>
-
-
-
-
-
-{{!-- <!-- index.hbs -->
-<div class="container coasters-index">
-  <br>
-  <div class="row">
-    <div class="col-md-4">
-      <h1 style="font-weight: 100">Lista de películas</h1>
-    </div>
-    <div class="col-md-6">
-    </div>
-    <div class="col-md-2">
-      <a href="/movies/{{page}}" class="btn btn-dark">Página siguiente</a>
-    </div>
-  </div>
-  <br>
-  <div class="row justify-content-around ">
-    <div class="col-4">
-      {{#each movies}}
-      <div class="cards-container">
-        <div class="card" style="width: 18rem;">
-          <img src="http://image.tmdb.org/t/p/w185/{{poster_path}}" alt="imagen">
-          <div class="card-body">
-            <h5><strong>Título: </strong> {{title}}</h5>
-            <p><strong>Descripción: </strong>{{overview}}</p>
-            <p><strong>Calificación:</strong> {{vote_average}}</p>
-            <p><strong>Fecha de lanzamiento:</strong> {{release_date}}</p>
-            <a href="/movies/add?movieId={{id}}" class="btn btn-dark">Añadir localización</a>
-            <a href="/movies/pending?movieId={{id}}" class="btn btn-dark">Añadir a películas pendientes</a>
-            <a href="/movies/shown?movieId={{id}}" class="btn btn-dark">Marcar como vista</a>
-          </div>
-        </div>
-      </div>
-      {{/each}}
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-10">
-    </div>
-    <div class="col-md-2">
-      <a href="/movies/{{page}}" class="btn btn-dark">Página siguiente</a>
-    </div>
-  </div>
-
-
-</div> --}}
