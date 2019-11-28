@@ -1,14 +1,25 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 const Movie = require('../models/Movie.model');
 const User = require('../models/User.model');
 const APIHandler = require('../services/moviesApi.service')
 const moviesAPI = new APIHandler(`https://api.themoviedb.org/3`)
+const {
+  ensureLoggedIn,
+  ensureLoggedOut
+} = require('connect-ensure-login');
 
-////////////////////
-const pendMovie = require('../models/Movie.model')
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    res.redirect('/auth/login')
+  }
+}
 
-router.get('/add', (req, res, next) => {
+
+router.get('/add', ensureAuthenticated, (req, res, next) => {
   console.log("click")
   const movieId = req.query.movieId
 
@@ -42,7 +53,7 @@ router.get('/add', (req, res, next) => {
 })
 
 
-router.post('/add', (req, res) => {
+router.post('/add', ensureAuthenticated, (req, res) => {
 
   console.log(req.body, "soy el req body y no soy null")
 
@@ -61,7 +72,7 @@ router.post('/add', (req, res) => {
 })
 
 
-router.get('/pending', (req, res, next) => {
+router.get('/pending', ensureAuthenticated, (req, res, next) => {
   const movieId = req.query.movieId
 
   moviesAPI.getMovieByID(movieId)
@@ -104,12 +115,11 @@ router.get('/pending', (req, res, next) => {
 })
 
 
-router.get('/shown', (req, res, next) => {
+router.get('/shown', ensureAuthenticated, (req, res, next) => {
   const movieId = req.query.movieId
   moviesAPI.getMovieByID(movieId)
     .then(lamovie => {
       console.log("----->", lamovie)
-      console.log(req.user.email)
       console.log("la movie id", lamovie.id)
       Movie.findOneAndUpdate({
           id: lamovie.id
@@ -119,9 +129,8 @@ router.get('/shown', (req, res, next) => {
         })
         .then(movieCreated => {
           console.log("*******", movieCreated, "la movie creade en db")
-
           User.findOneAndUpdate({
-              email: req.user.email,
+              _id: req.user._id,
               shown: {
                 '$ne': movieCreated._id
               }
@@ -133,6 +142,11 @@ router.get('/shown', (req, res, next) => {
               new: true
             })
             .then(info => {
+              // User.findOneAndRemove({
+              //     pending: info.shown
+              //   })
+              //   .then()
+              //   .catch()
               console.log("---------------------")
               console.log(" la info", info)
             })
@@ -148,10 +162,8 @@ router.get('/shown', (req, res, next) => {
 
 //Yo la ultima, que si no entro siempre
 router.get('/:page', (req, res, next) => {
-  //Movie.find()
   moviesAPI.getFullList(req.params.page++)
     .then(allmovies => {
-      //console.log(allmovies, "allmovies!")
       res.render('movies/listMovies', {
         movies: allmovies.results,
         page: req.params.page++

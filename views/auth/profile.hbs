@@ -11,19 +11,20 @@
   </div>
   <br>
   {{#with user}}
-    <div class="row">
-      <div class="col-md-6">
-        <br><br>
-        <p><strong>Userame:</strong>{{username}}</p>
-        <br>
-        <p><strong>Email:</strong>{{email}}</p>
-        <br>
-        {{!-- <a href="#" class="btn btn-dark">Editar Perfil </a> --}}
-        <a href="/auth/profile/pending" class="btn btn-dark">Películas pendientes </a>
-        <a href="/auth/profile/seen" class="btn btn-dark">Películas vistas</a>
-      </div>
+  <div class="row">
+    <div class="col-md-6">
+      <br><br>
+      <p><strong>Userame:</strong>{{username}}</p>
+      <br>
+      <p><strong>Email:</strong>{{email}}</p>
+      <br>
+      {{!-- <a href="#" class="btn btn-dark">Editar Perfil </a> --}}
+      <a href="/auth/profile/pending" class="btn btn-dark">Películas pendientes </a>
+      <a href="/auth/profile/seen" class="btn btn-dark">Películas vistas</a>
+      <a href="/auth/profile/events" class="btn btn-dark">Eventos</a>
     </div>
+  </div>
   {{/with}}
 
-  
+
 </div>

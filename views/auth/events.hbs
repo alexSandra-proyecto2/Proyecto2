@@ -1,0 +1,32 @@
+<div class="container coasters-index">
+  <br>
+  <div class="row">
+    <div class="col-md-4">
+      <h1 style="font-weight: 100">Mis eventos</h1>
+    </div>
+    <div class="col-md-8">
+    </div>
+  </div>
+  <br>
+
+  {{#each events}}
+
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    {{!-- <div class="col-md-2">
+      <img src="http://image.tmdb.org/t/p/w185/{{poster_path}}" alt="imagen">
+    </div> --}}
+    <div class="col-md-8">
+      <br><br>
+      <h5><strong>Título del evento: </strong> {{name}}</h5>
+      <p><strong>Descripción del evento: </strong>{{description}}</p>
+      <p><strong>Día del evento:</strong> {{date}}</p>
+      <p><strong>Dirección del evento:</strong> {{address}}</p>
+    </div>
+  </div>
+  <hr>
+  <br>
+  {{/each}}
+
+</div>

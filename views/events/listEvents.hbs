@@ -23,10 +23,14 @@
       <p><strong>Creador del evento:</strong> {{creator}}</p>
       <p><strong>Tipo de evento:</strong> {{type}}</p>
       <p><strong>Dirección del evento:</strong> {{address}}</p>
-      <a href="#" class="btn btn-dark">Unirme al evento</a>
+      {{#each this.assistants}}
+      <p><strong>Asistentes:</strong> {{this.username}}</p>
+      {{/each}}
+
+      <a href="/events/join?eventId={{_id}}" class="btn btn-dark">Unirme al evento</a>
       <a href="/events/edit?eventId={{_id}}" class="btn btn-dark">Modificar evento</a>
       <a href="/events/delete?eventId={{_id}}" class="btn btn-dark">Borrar evento</a>
-      
+
 
 
     </div>

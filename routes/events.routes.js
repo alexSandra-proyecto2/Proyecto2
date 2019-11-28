@@ -1,16 +1,25 @@
 const express = require('express');
 const router = express.Router();
 const Event = require('../models/Event.model');
+const User = require('../models/User.model');
+const {
+  ensureLoggedIn,
+  ensureLoggedOut
+} = require('connect-ensure-login');
 
-/* GET home page */
-// router.get('/', (req, res, next) => {
-//   res.render('events/listEvents');
-// });
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    res.redirect('/auth/login')
+  }
+}
 
 router.get('/', (req, res, next) => {
   Event.find()
+    .populate("assistants")
     .then(allevents => {
-      console.log('holiiiiii')
+      console.log(allevents)
       res.render('events/listEvents', {
         event: allevents
       })
@@ -19,12 +28,12 @@ router.get('/', (req, res, next) => {
 
 
 
-router.get('/add', (req, res, next) => {
+router.get('/add', ensureAuthenticated, (req, res, next) => {
   res.render('events/addEvent');
 });
 
 
-router.post('/add', (req, res) => {
+router.post('/add', ensureAuthenticated, (req, res) => {
   const location = req.body.location
   const name = req.body.name
   const date = req.body.date
@@ -52,7 +61,7 @@ router.post('/add', (req, res) => {
 })
 
 
-router.get('/edit', (req, res) => {
+router.get('/edit', ensureAuthenticated, (req, res) => {
   const eventId = req.query.eventId
   Event.findById(eventId)
     .then(theEvent => res.render('events/editEvent', theEvent))
@@ -60,7 +69,7 @@ router.get('/edit', (req, res) => {
 })
 
 
-router.post('/edit', (req, res) => {
+router.post('/edit', ensureAuthenticated, (req, res) => {
   console.log(req.body, "req.bdy en edit")
   const location = req.body.location
   const name = req.body.name
@@ -85,10 +94,45 @@ router.post('/edit', (req, res) => {
 })
 
 
-router.get('/delete', (req, res) => {
+router.get('/delete', ensureAuthenticated, (req, res) => {
   Event.findByIdAndDelete(req.query.eventId)
     .then(() => res.redirect('/events'))
     .catch(err => console.log(err))
+})
+
+
+
+
+router.get('/join', ensureAuthenticated, (req, res, next) => {
+  console.log(req.query.eventId)
+  User.findOneAndUpdate({
+      _id: req.user._id,
+      events: {
+        '$ne': req.query.eventId
+      }
+    }, {
+      $push: {
+        events: req.query.eventId
+      }
+    }, {
+      new: true
+    })
+    .then(info => {
+      console.log("---------------------")
+      console.log(" la info", info)
+    })
+  Event.findOneAndUpdate({
+    _id: req.query.eventId
+  }, {
+    $push: {
+      assistants: req.user._id
+    }
+  }, {
+    new: true
+  }).then(info => {
+    console.log("---------------------")
+    console.log(" la info", info)
+  })
 })
 
 module.exports = router;

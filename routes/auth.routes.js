@@ -2,6 +2,7 @@ const express = require("express");
 const passport = require('passport');
 const router = express.Router();
 const User = require("../models/User.model");
+const Movie = require("../models/Movie.model");
 const {
   ensureLoggedIn,
   ensureLoggedOut
@@ -113,5 +114,28 @@ router.get('/profile/seen', ensureAuthenticated, (req, res) => {
     })
 });
 
+
+router.get('/profile/events', ensureAuthenticated, (req, res) => {
+  User.findById(req.user._id)
+    .populate('events')
+    .then(resData => {
+      console.log(resData)
+      res.render('auth/events', {
+        events: resData.events
+      })
+    })
+});
+
+
+//falta que se borre del shown"""
+router.get('profile/seen/delete', (req, res) => {
+  Movie.find(req.query.movieId)
+    .then(res => {
+      console.log(res)
+    })
+  // User.shown.findOneAndDelete()
+  //   .then(() => res.redirect('/auth/profile/seen'))
+  //   .catch(err => console.log(err))
+})
 
 module.exports = router;

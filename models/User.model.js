@@ -14,7 +14,11 @@ const userSchema = new Schema({
   shown: [{
     type: Schema.Types.ObjectId,
     ref: "Movie"
-  }]
+  }],
+  events: [{
+    type: Schema.Types.ObjectId,
+    ref: "Event"
+  }],
 }, {
   timestamps: {
     createdAt: 'created_at',
