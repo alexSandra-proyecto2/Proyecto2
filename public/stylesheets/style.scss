@@ -3,6 +3,7 @@ body {
 }
 .navbar {
   font: 14px "Altasi", Helvetica, Arial, sans-serif;
+  
 }
 
 .btn-dark {
@@ -17,15 +18,15 @@ a {
   height: 650px
 }
 .movies-index {
- background-color:  #062231;
+ background-color:  #252f3e;
 }
 .movies-header {
-  padding-top: 30x;
+  padding: 30px 0;
 }
 
 
 .containerMovies {
-  background-color:  #535D5D;
+  background-color:  #9fb5c7;
   display: flex;
   height: 320px;
   color: #E1E3E2;
@@ -37,6 +38,8 @@ a {
   display: block;
   margin: 0 auto;
   margin-top: 10px;
+  align-items: center;
+
 }
 .card-body {
   width: 60%;
