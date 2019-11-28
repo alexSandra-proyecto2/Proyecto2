@@ -90,7 +90,13 @@ function ensureAuthenticated(req, res, next) {
 }
 
 router.get('/profile/pending', ensureAuthenticated, (req, res) => {
-  res.render('auth/pendingMovies', { user: req.user });
+  User.findById(req.user._id)
+    .populate("pending")
+    .then(resData => {
+      res.render('auth/pendingMovies', {
+        pending: resData.pending
+      })
+    })
 });
 router.get('/profile/seen', ensureAuthenticated, (req, res) => {
   res.render('auth/seenMovies', { user: req.user });
