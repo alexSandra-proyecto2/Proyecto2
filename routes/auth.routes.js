@@ -78,7 +78,9 @@ router.get("/logout", (req, res) => {
 });
 
 router.get('/profile', ensureAuthenticated, (req, res) => {
-  res.render('auth/profile', { user: req.user });
+  res.render('auth/profile', {
+    user: req.user
+  });
 });
 
 function ensureAuthenticated(req, res, next) {
@@ -90,10 +92,25 @@ function ensureAuthenticated(req, res, next) {
 }
 
 router.get('/profile/pending', ensureAuthenticated, (req, res) => {
-  res.render('auth/pendingMovies', { user: req.user });
+  User.findById(req.user._id)
+    .populate("pending")
+    .then(resData => {
+      res.render('auth/pendingMovies', {
+        pending: resData.pending
+      })
+    })
 });
+
+
 router.get('/profile/seen', ensureAuthenticated, (req, res) => {
-  res.render('auth/seenMovies', { user: req.user });
+  User.findById(req.user._id)
+    .populate('shown')
+    .then(resData => {
+      console.log(resData)
+      res.render('auth/seenMovies', {
+        shown: resData.shown
+      })
+    })
 });
 
 

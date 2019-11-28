@@ -104,6 +104,47 @@ router.get('/pending', (req, res, next) => {
 })
 
 
+router.get('/shown', (req, res, next) => {
+  const movieId = req.query.movieId
+  moviesAPI.getMovieByID(movieId)
+    .then(lamovie => {
+      console.log("----->", lamovie)
+      console.log(req.user.email)
+      console.log("la movie id", lamovie.id)
+      Movie.findOneAndUpdate({
+          id: lamovie.id
+        }, lamovie, {
+          upsert: true,
+          new: true
+        })
+        .then(movieCreated => {
+          console.log("*******", movieCreated, "la movie creade en db")
+
+          User.findOneAndUpdate({
+              email: req.user.email,
+              shown: {
+                '$ne': movieCreated._id
+              }
+            }, {
+              $push: {
+                shown: movieCreated._id
+              }
+            }, {
+              new: true
+            })
+            .then(info => {
+              console.log("---------------------")
+              console.log(" la info", info)
+            })
+            .catch(err => 'error: ' + err)
+        })
+        .catch(err => console.log(err, "find and update"))
+
+
+    })
+    .catch(err => console.log(err, "getmovie from api"))
+})
+
 
 //Yo la ultima, que si no entro siempre
 router.get('/:page', (req, res, next) => {
