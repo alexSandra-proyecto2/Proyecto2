@@ -32,7 +32,7 @@ router.get('/add', ensureAuthenticated, (req, res, next) => {
         .then(themovie => {
           res.render('movies/addMovieLocation', {
             movie: themovie,
-             user: req.user
+            user: req.user
           })
         })
         .catch(err => {
@@ -41,7 +41,8 @@ router.get('/add', ensureAuthenticated, (req, res, next) => {
             })
             .then(themovie => {
               res.render('movies/addMovieLocation', {
-                movie: themovie, user: req.user
+                movie: themovie,
+                user: req.user
               })
             })
 
@@ -98,6 +99,9 @@ router.get('/pending', ensureAuthenticated, (req, res, next) => {
             }, {
               $push: {
                 pending: movieCreated._id
+              },
+              $pullAll: {
+                shown: [movieCreated._id]
               }
             }, {
               new: true
@@ -139,6 +143,9 @@ router.get('/shown', ensureAuthenticated, (req, res, next) => {
             }, {
               $push: {
                 shown: movieCreated._id
+              },
+              $pullAll: {
+                pending: [movieCreated._id]
               }
             }, {
               new: true
@@ -169,7 +176,7 @@ router.get('/:page', (req, res, next) => {
       res.render('movies/listMovies', {
         movies: allmovies.results,
         page: req.params.page++,
-         user: req.user
+        user: req.user
       })
     })
     .catch(err => console.log(err, "err full list"))

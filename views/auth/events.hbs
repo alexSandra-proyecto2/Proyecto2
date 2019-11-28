@@ -23,6 +23,10 @@
       <p><strong>Descripción del evento: </strong>{{description}}</p>
       <p><strong>Día del evento:</strong> {{date}}</p>
       <p><strong>Dirección del evento:</strong> {{address}}</p>
+      <p><strong>Asistentes:</strong></p>
+      {{#each assistants}}
+      <p>{{username}}</p>
+      {{/each}}
       <a href="/auth/profile/events/delete?eventId={{_id}}" class="btn btn-dark">Darme de baja</a>
     </div>
   </div>

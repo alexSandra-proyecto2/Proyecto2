@@ -19,7 +19,15 @@ function placeMovie(movies, myMap) {
         lat: elm.location[i].coordinates.lat,
         lng: elm.location[i].coordinates.lng
       }
-      const infoMovie = '<h4 style="text-align:center">' + elm.title + '</h4><br>' + '<div style="padding:0 12px"><img src="http://image.tmdb.org/t/p/w185/' + elm.poster_path + '" alt="imagen"><br><a href="#" style="margin-top:10px" class="btn btn-dark"> Añadir a pendientes</a><br><a href="#" style="margin-top:10px" class="btn btn-dark"> Añadir a vistas</a>'
+
+
+      //  < a href = "/movies/pending?movieId={{id}}"
+      //  class = "btn btn-dark" > Pendiente < /a> <
+      //    a href = "/movies/shown?movieId={{id}}"
+      //  class = "btn btn-dark" > Vista < /a>
+
+
+      const infoMovie = '<h4 style="text-align:center">' + elm.title + '</h4><br>' + '<div style="padding:0 12px"><img src="http://image.tmdb.org/t/p/w185/' + elm.poster_path + '" alt="imagen"><br><a href="/movies/pending?movieId=' + elm.id + '" style="margin-top:10px" class="btn btn-dark"> Añadir a pendientes</a><br><a href="/movies/shown?movieId=' + elm.id + '" style="margin-top:10px" class="btn btn-dark"> Añadir a vistas</a>'
       let marker = new google.maps.Marker({
         position: center,
         map: myMap
@@ -45,19 +53,37 @@ function initMap() {
       lat: 41.3977381,
       lng: 2.190471916
     },
-    styles: [
-      { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
-      { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
-      { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
+    styles: [{
+        elementType: 'geometry',
+        stylers: [{
+          color: '#242f3e'
+        }]
+      },
+      {
+        elementType: 'labels.text.stroke',
+        stylers: [{
+          color: '#242f3e'
+        }]
+      },
+      {
+        elementType: 'labels.text.fill',
+        stylers: [{
+          color: '#746855'
+        }]
+      },
       {
         featureType: 'administrative.locality',
         elementType: 'labels.text.fill',
-        stylers: [{ color: '#d59563' }]
+        stylers: [{
+          color: '#d59563'
+        }]
       },
       {
         featureType: 'poi',
         elementType: 'labels.text.fill',
-        stylers: [{ color: '#d59563' }]
+        stylers: [{
+          color: '#d59563'
+        }]
       },
       // {
       //   featureType: 'poi.park',
@@ -72,32 +98,44 @@ function initMap() {
       {
         featureType: 'road',
         elementType: 'geometry',
-        stylers: [{ color: '#38414e' }]
+        stylers: [{
+          color: '#38414e'
+        }]
       },
       {
         featureType: 'road',
         elementType: 'geometry.stroke',
-        stylers: [{ color: '#212a37' }]
+        stylers: [{
+          color: '#212a37'
+        }]
       },
       {
         featureType: 'road',
         elementType: 'labels.text.fill',
-        stylers: [{ color: '#9ca5b3' }]
+        stylers: [{
+          color: '#9ca5b3'
+        }]
       },
       {
         featureType: 'road.highway',
         elementType: 'geometry',
-        stylers: [{ color: '#746855' }]
+        stylers: [{
+          color: '#746855'
+        }]
       },
       {
         featureType: 'road.highway',
         elementType: 'geometry.stroke',
-        stylers: [{ color: '#1f2835' }]
+        stylers: [{
+          color: '#1f2835'
+        }]
       },
       {
         featureType: 'road.highway',
         elementType: 'labels.text.fill',
-        stylers: [{ color: '#f3d19c' }]
+        stylers: [{
+          color: '#f3d19c'
+        }]
       },
       // {
       //   featureType: 'transit',
@@ -112,7 +150,9 @@ function initMap() {
       {
         featureType: 'water',
         elementType: 'geometry',
-        stylers: [{ color: '#9FB4C7' }]
+        stylers: [{
+          color: '#9FB4C7'
+        }]
       },
       // {
       //   featureType: 'water',
@@ -154,7 +194,7 @@ function placeEvent(event, myMap) {
       lng: elm.location.coordinates.lng
     }
     const infoEvent = '<h4 style="text-align:center">Título: ' + elm.name + '</h4>' + '<br> <p>Día del evento: ' + elm.date + '</p> <br> <p>Descripción: ' + elm.description + '</p>'
-    
+
 
     let marker = new google.maps.Marker({
       position: center,

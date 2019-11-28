@@ -120,9 +120,15 @@ router.get('/profile/seen', ensureAuthenticated, (req, res) => {
 
 router.get('/profile/events', ensureAuthenticated, (req, res) => {
   User.findById(req.user._id)
-    .populate('events')
+    .populate({
+      path: 'events',
+      populate: {
+        path: 'assistants',
+        model: 'User'
+      }
+    })
     .then(resData => {
-      console.log(resData)
+      console.log(resData.events, "res de /profile/events")
       res.render('auth/events', {
         events: resData.events,
         user: req.user
@@ -136,15 +142,15 @@ router.get('/profile/events/delete', (req, res) => {
         "events": [req.query.eventId]
       }
     })
-    .then(res.redirect("/auth/profile/events"))
+    .then(Event.findByIdAndUpdate(req.query.eventId, {
+        $pullAll: {
+          "assistants": [req.user._id]
+        }
+      })
+      .then(res.redirect("/auth/profile/events"))
+      .catch(err => console.log(err)))
     .catch(err => console.log(err))
-  Event.findByIdAndUpdate(req.query.eventId, {
-      $pullAll: {
-        "assistants": [req.user._id]
-      }
-    })
-    .then(res.redirect("/auth/profile/events"))
-    .catch(err => console.log(err))
+
 })
 
 

@@ -20,7 +20,8 @@ const eventSchema = new Schema({
       lng: Number,
       lat: Number
     }
-  }
+  },
+  picPath: String
 }, {
   timestamps: {
     createdAt: 'created_at',

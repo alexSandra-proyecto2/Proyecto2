@@ -23,8 +23,9 @@
       <p><strong>Creador del evento:</strong> {{creator}}</p>
       <p><strong>Tipo de evento:</strong> {{type}}</p>
       <p><strong>Dirección del evento:</strong> {{address}}</p>
+      <p><strong>Asistentes:</strong></p>
       {{#each this.assistants}}
-      <p><strong>Asistentes:</strong> {{this.username}}</p>
+      <p>{{this.username}}</p>
       {{/each}}
 
       <a href="/events/join?eventId={{_id}}" class="btn btn-dark">Unirme al evento</a>

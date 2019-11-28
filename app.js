@@ -13,6 +13,7 @@ require('./configs/middlewares.config')(app)
 require('./configs/locals.config')(app)
 require('./configs/preprocessor.config')(app)
 require('./configs/debug.config')
+//require("./configs/debug.config");
 
 
 hbs.registerHelper('ifUndefined', (value, options) => {
