@@ -1,12 +1,12 @@
 <div class="container">
   <br>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-8">
       {{#with user}}
       <h1 style="font-weight: 100">Perfíl de {{username}}</h1>
       {{/with}}
     </div>
-    <div class="col-md-8">
+    <div class="col-md-4">
     </div>
   </div>
   <br>
@@ -14,9 +14,9 @@
   <div class="row">
     <div class="col-md-6">
       <br><br>
-      <p><strong>Userame:</strong>{{username}}</p>
+      <p style="font-size:25px"><strong>Userame: </strong>{{username}}</p>
       <br>
-      <p><strong>Email:</strong>{{email}}</p>
+      <p style="font-size:25px"><strong>Email: </strong>{{email}}</p>
       <br>
       {{!-- <a href="#" class="btn btn-dark">Editar Perfil </a> --}}
       <a href="/auth/profile/pending" class="btn btn-dark">Películas pendientes </a>

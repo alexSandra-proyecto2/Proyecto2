@@ -24,7 +24,9 @@
       <h5><strong>Título: </strong> {{title}}</h5>
       <p><strong>Descripción: </strong>{{overview}}</p>
       <p><strong>Calificación:</strong> {{vote_average}}</p>
-      <a href="/movies/shown?movieId={{id}}" class="btn btn-dark">Marcar como vista</a>
+      {{!-- <a href="/movies/shown?movieId={{id}}" class="btn btn-dark">Marcar como vista</a> --}}
+      <a href="/auth/profile/pending/delete?movieId={{_id}}" class="btn btn-dark">Marcar como vista</a>
+      <a href="/auth/profile/pending/deleteFromPending?movieId={{_id}}" class="btn btn-dark">Borrar de pendientes</a>
     </div>
   </div>
   <br>

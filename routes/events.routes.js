@@ -21,7 +21,8 @@ router.get('/', (req, res, next) => {
     .then(allevents => {
       console.log(allevents)
       res.render('events/listEvents', {
-        event: allevents
+        event: allevents,
+         user: req.user
       })
     })
 });
@@ -29,7 +30,9 @@ router.get('/', (req, res, next) => {
 
 
 router.get('/add', ensureAuthenticated, (req, res, next) => {
-  res.render('events/addEvent');
+  res.render('events/addEvent', {
+    user: req.user
+  });
 });
 
 

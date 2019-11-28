@@ -32,7 +32,8 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
   store: new MongoStore({
-    mongooseConnection: mongoose.connection
+    mongooseConnection: mongoose.connection,
+    ttl: 24 * 60 * 60 // 1 day
   })
 }))
 app.use(flash());

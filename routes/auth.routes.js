@@ -3,6 +3,7 @@ const passport = require('passport');
 const router = express.Router();
 const User = require("../models/User.model");
 const Movie = require("../models/Movie.model");
+const Event = require("../models/Event.model");
 const {
   ensureLoggedIn,
   ensureLoggedOut
@@ -97,7 +98,8 @@ router.get('/profile/pending', ensureAuthenticated, (req, res) => {
     .populate("pending")
     .then(resData => {
       res.render('auth/pendingMovies', {
-        pending: resData.pending
+        pending: resData.pending,
+        user: req.user
       })
     })
 });
@@ -109,7 +111,8 @@ router.get('/profile/seen', ensureAuthenticated, (req, res) => {
     .then(resData => {
       console.log(resData)
       res.render('auth/seenMovies', {
-        shown: resData.shown
+        shown: resData.shown,
+        user: req.user
       })
     })
 });
@@ -121,21 +124,66 @@ router.get('/profile/events', ensureAuthenticated, (req, res) => {
     .then(resData => {
       console.log(resData)
       res.render('auth/events', {
-        events: resData.events
+        events: resData.events,
+        user: req.user
       })
     })
 });
 
-
-//falta que se borre del shown"""
-router.get('profile/seen/delete', (req, res) => {
-  Movie.find(req.query.movieId)
-    .then(res => {
-      console.log(res)
+router.get('/profile/events/delete', (req, res) => {
+  User.findByIdAndUpdate(req.user._id, {
+      $pullAll: {
+        "events": [req.query.eventId]
+      }
     })
-  // User.shown.findOneAndDelete()
-  //   .then(() => res.redirect('/auth/profile/seen'))
-  //   .catch(err => console.log(err))
+    .then(res.redirect("/auth/profile/events"))
+    .catch(err => console.log(err))
+  Event.findByIdAndUpdate(req.query.eventId, {
+      $pullAll: {
+        "assistants": [req.user._id]
+      }
+    })
+    .then(res.redirect("/auth/profile/events"))
+    .catch(err => console.log(err))
 })
+
+
+
+router.get('/profile/seen/delete', (req, res) => {
+  console.log("la query", req.query.movieId, "el user", req.user._id)
+  User.findByIdAndUpdate(req.user._id, {
+      $pullAll: {
+        "shown": [req.query.movieId]
+      }
+    })
+    .then(res.redirect("/auth/profile/seen"))
+    .catch(err => console.log(err))
+})
+
+
+router.get('/profile/pending/delete', (req, res) => {
+  console.log("la query", req.query.movieId, "el user", req.user._id)
+  User.findByIdAndUpdate(req.user._id, {
+      $pullAll: {
+        "pending": [req.query.movieId]
+      },
+      $push: {
+        shown: req.query.movieId
+      }
+    })
+    .then(res.redirect("/auth/profile/pending"))
+    .catch(err => console.log(err))
+})
+router.get('/profile/pending/deleteFromPending', (req, res) => {
+  console.log("la query", req.query.movieId, "el user", req.user._id)
+  User.findByIdAndUpdate(req.user._id, {
+      $pullAll: {
+        "pending": [req.query.movieId]
+      }
+    })
+    .then(res.redirect("/auth/profile/pending"))
+    .catch(err => console.log(err))
+})
+
 
 module.exports = router;

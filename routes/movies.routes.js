@@ -31,7 +31,8 @@ router.get('/add', ensureAuthenticated, (req, res, next) => {
       Movie.create(lamovie)
         .then(themovie => {
           res.render('movies/addMovieLocation', {
-            movie: themovie
+            movie: themovie,
+             user: req.user
           })
         })
         .catch(err => {
@@ -40,7 +41,7 @@ router.get('/add', ensureAuthenticated, (req, res, next) => {
             })
             .then(themovie => {
               res.render('movies/addMovieLocation', {
-                movie: themovie
+                movie: themovie, user: req.user
               })
             })
 
@@ -167,7 +168,8 @@ router.get('/:page', (req, res, next) => {
     .then(allmovies => {
       res.render('movies/listMovies', {
         movies: allmovies.results,
-        page: req.params.page++
+        page: req.params.page++,
+         user: req.user
       })
     })
     .catch(err => console.log(err, "err full list"))
