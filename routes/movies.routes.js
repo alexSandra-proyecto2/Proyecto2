@@ -68,31 +68,40 @@ router.get('/pending', (req, res, next) => {
     .then(lamovie => {
       console.log("----->", lamovie)
       console.log(req.user.email)
-
-      Movie.findOneAndUpdate(lamovie.id, lamovie, {
-          upsert: true
+      console.log("la movie id", lamovie.id)
+      Movie.findOneAndUpdate({
+          id: lamovie.id
+        }, lamovie, {
+          upsert: true,
+          new: true
         })
         .then(movieCreated => {
           console.log("*******", movieCreated, "la movie creade en db")
+
           User.findOneAndUpdate({
-            email: req.user.email
-          }, {
-            $push: {
-              pending: movieCreated._id
-            }
-          })
-          console.log("---------------------")
+              email: req.user.email,
+              pending: {
+                '$ne': movieCreated._id
+              }
+            }, {
+              $push: {
+                pending: movieCreated._id
+              }
+            }, {
+              new: true
+            })
             .then(info => {
-              console.log(info)
+              console.log("---------------------")
+              console.log(" la info", info)
             })
             .catch(err => 'error: ' + err)
         })
         .catch(err => console.log(err, "find and update"))
 
+
     })
     .catch(err => console.log(err, "getmovie from api"))
-});
-
+})
 
 
 
