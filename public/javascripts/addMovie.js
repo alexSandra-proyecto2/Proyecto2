@@ -24,7 +24,7 @@ document.getElementById('direccion').addEventListener("click", (event) => {
             lat
           }
         }
-      }).then(x => window.location.href = "http://localhost:3000/movies/1")
+      }).then(x => window.location.href = "https://alexsandra.herokuapp.com/movies/1")
 
 
     })
