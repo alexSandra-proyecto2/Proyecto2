@@ -1,8 +1,3 @@
-/*
-Cuando pulse boton coger info 
-convertir info
-enviar info a back
-*/
 
 document.getElementById('direccion').addEventListener("click", (event) => {
   event.preventDefault()

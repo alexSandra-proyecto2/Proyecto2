@@ -5,7 +5,7 @@ const User = require("../models/User.model");
 const multer = require("multer");
 
 const uploadCloud = require("../configs/cloudinary.config");
-const { ensureLoggedIn, ensureLoggedOut } = require("connect-ensure-login");
+
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
@@ -15,6 +15,8 @@ function ensureAuthenticated(req, res, next) {
   }
 }
 
+
+//inicio de ventos
 router.get("/", (req, res, next) => {
   Event.find()
     .populate("assistants")
@@ -26,12 +28,16 @@ router.get("/", (req, res, next) => {
     });
 });
 
+
+//añadir un evento
 router.get("/add", ensureAuthenticated, (req, res, next) => {
   res.render("events/addEvent", {
     user: req.user
   });
 });
 
+
+//añadir un evento
 // uploadCloud.single("picPath")
 router.post("/add", (req, res) => {
   console.log(req.file);
@@ -47,15 +53,15 @@ router.post("/add", (req, res) => {
   let creator = req.user.username;
 
   Event.create({
-    name,
-    date,
-    description,
-    creator,
-    type,
-    location,
-    address
-    //picPath
-  })
+      name,
+      date,
+      description,
+      creator,
+      type,
+      location,
+      address
+      //picPath
+    })
     .then(x => {
       console.log(x);
       res.json(x);
@@ -63,6 +69,8 @@ router.post("/add", (req, res) => {
     .catch(err => "error: " + err);
 });
 
+
+//editar un evento
 router.get("/edit", ensureAuthenticated, (req, res) => {
   const eventId = req.query.eventId;
   Event.findById(eventId)
@@ -70,6 +78,7 @@ router.get("/edit", ensureAuthenticated, (req, res) => {
     .catch(err => console.log("error!!", err));
 });
 
+//editar un evento
 router.post("/edit", ensureAuthenticated, (req, res) => {
   console.log(req.body, "req.bdy en edit");
   const location = req.body.location;
@@ -80,13 +89,13 @@ router.post("/edit", ensureAuthenticated, (req, res) => {
   const address = req.body.address;
 
   Event.findByIdAndUpdate(req.body.eventId, {
-    name,
-    date,
-    description,
-    type,
-    location,
-    address
-  })
+      name,
+      date,
+      description,
+      type,
+      location,
+      address
+    })
     .then(x => {
       console.log(x, "update");
       // res.json(x)
@@ -94,46 +103,42 @@ router.post("/edit", ensureAuthenticated, (req, res) => {
     .catch(err => console.log(err));
 });
 
+
+//eliminar un evento
 router.get("/delete", ensureAuthenticated, (req, res) => {
   Event.findByIdAndDelete(req.query.eventId)
     .then(() => res.redirect("/events"))
     .catch(err => console.log(err));
 });
 
+
+//unime a un evento
 router.get("/join", ensureAuthenticated, (req, res, next) => {
   console.log(req.query.eventId);
-  User.findOneAndUpdate(
-    {
-      _id: req.user._id,
-      events: {
-        $ne: req.query.eventId
-      }
-    },
-    {
-      $push: {
-        events: req.query.eventId
-      }
-    },
-    {
-      new: true
+  User.findOneAndUpdate({
+    _id: req.user._id,
+    events: {
+      $ne: req.query.eventId
     }
-  ).then(info => {
+  }, {
+    $push: {
+      events: req.query.eventId
+    }
+  }, {
+    new: true
+  }).then(info => {
     console.log("---------------------");
     console.log(" la info", info);
   });
-  Event.findOneAndUpdate(
-    {
-      _id: req.query.eventId
-    },
-    {
-      $push: {
-        assistants: req.user._id
-      }
-    },
-    {
-      new: true
+  Event.findOneAndUpdate({
+    _id: req.query.eventId
+  }, {
+    $push: {
+      assistants: req.user._id
     }
-  ).then(info => {
+  }, {
+    new: true
+  }).then(info => {
     console.log("---------------------");
     console.log(" la info", info);
   });

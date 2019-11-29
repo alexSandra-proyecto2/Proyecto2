@@ -5,7 +5,7 @@ const eventSchema = new Schema({
   name: String,
   date: Date,
   description: String,
-  creator: String, //de modelo CAMBIAR
+  creator: String,
   assistants: [{
     type: Schema.Types.ObjectId,
     ref: "User"

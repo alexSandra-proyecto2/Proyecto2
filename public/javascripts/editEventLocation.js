@@ -1,7 +1,6 @@
 document.getElementById('guardacambio').addEventListener("click", (event) => {
   event.preventDefault()
 
-  //refactorizar con queryselector(input) y deconstruccion
   let dir = document.getElementById('dirInput2').value
   let name = document.getElementById('name-input').value
   let date = document.getElementById('date-input').value

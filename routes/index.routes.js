@@ -4,8 +4,12 @@ const Movie = require('../models/Movie.model');
 const Event = require('../models/Event.model');
 /* GET home page */
 
+
+//pagina de inicio
 router.get('/', (req, res, next) => {
-  res.render('index', { user: req.user });
+  res.render('index', {
+    user: req.user
+  });
 });
 
 router.get('/api/events', (req, res, next) => {
@@ -16,6 +20,8 @@ router.get('/api/events', (req, res, next) => {
     .catch(err => next(err))
 });
 
+
+//api para los eventos
 router.get('/api/:id', (req, res, next) => {
   let eventId = req.params.id
   Event.findOne({
@@ -38,14 +44,11 @@ router.get('/api', (req, res, next) => {
       movies: movieFromDB
     }))
     .catch(err => next(err))
-  // Event.find()
-  //   .then(eventFromDB => res.status(200).json({
-  //     event: eventFromDB
-  //   }))
-  //   .catch(err => next(err))
 });
 
 
+
+//api para las películas
 router.get('/api/:id', (req, res, next) => {
   let movieId = req.params.id;
   let eventId = req.params.id
@@ -60,20 +63,8 @@ router.get('/api/:id', (req, res, next) => {
       });
     }
   })
-  // Event.findOne({
-  //   _id: eventId
-  // }, (error, movieFromDB) => {
-  //   if (error) {
-  //     next(error)
-  //   } else {
-  //     res.status(200).json({
-  //       event: eventFromDB
-  //     });
-  //   }
-  // });
+
 });
-
-
 
 
 module.exports = router;

@@ -5,7 +5,6 @@ document.getElementById('creaEvento').addEventListener("click", (event) => {
   let date = document.getElementById('date-input').value
   let description = document.getElementById('description-input').value
   let type = document.getElementById('type-input').value
-  //let movieId = document.getElementById('movieId').getAttribute('popino')
   console.log("las direccion", dir)
   getAddress(dir)
     .then(responseFromAPI => {

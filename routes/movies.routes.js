@@ -5,10 +5,7 @@ const Movie = require('../models/Movie.model');
 const User = require('../models/User.model');
 const APIHandler = require('../services/moviesApi.service')
 const moviesAPI = new APIHandler(`https://api.themoviedb.org/3`)
-const {
-  ensureLoggedIn,
-  ensureLoggedOut
-} = require('connect-ensure-login');
+
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
@@ -18,7 +15,7 @@ function ensureAuthenticated(req, res, next) {
   }
 }
 
-
+//añadir localizacion
 router.get('/add', ensureAuthenticated, (req, res, next) => {
   console.log("click")
   const movieId = req.query.movieId
@@ -55,6 +52,7 @@ router.get('/add', ensureAuthenticated, (req, res, next) => {
 })
 
 
+//añadir localizacion
 router.post('/add', ensureAuthenticated, (req, res) => {
 
   console.log(req.body, "soy el req body y no soy null")
@@ -73,7 +71,7 @@ router.post('/add', ensureAuthenticated, (req, res) => {
     .catch(err => 'error: ' + err)
 })
 
-
+//añadir a películas pendientes
 router.get('/pending', ensureAuthenticated, (req, res, next) => {
   const movieId = req.query.movieId
 
@@ -120,7 +118,7 @@ router.get('/pending', ensureAuthenticated, (req, res, next) => {
 
 })
 
-
+//añadir a películas vistas
 router.get('/shown', ensureAuthenticated, (req, res, next) => {
   const movieId = req.query.movieId
   moviesAPI.getMovieByID(movieId)
@@ -151,11 +149,6 @@ router.get('/shown', ensureAuthenticated, (req, res, next) => {
               new: true
             })
             .then(info => {
-              // User.findOneAndRemove({
-              //     pending: info.shown
-              //   })
-              //   .then()
-              //   .catch()
               console.log("---------------------")
               console.log(" la info", info)
             })
@@ -169,7 +162,8 @@ router.get('/shown', ensureAuthenticated, (req, res, next) => {
 })
 
 
-//Yo la ultima, que si no entro siempre
+//ULTIMA 
+//pagina de inicio
 router.get('/:page', (req, res, next) => {
   moviesAPI.getFullList(req.params.page++)
     .then(allmovies => {

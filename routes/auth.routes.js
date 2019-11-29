@@ -4,23 +4,19 @@ const router = express.Router();
 const User = require("../models/User.model");
 const Movie = require("../models/Movie.model");
 const Event = require("../models/Event.model");
-const {
-  ensureLoggedIn,
-  ensureLoggedOut
-} = require('connect-ensure-login');
-
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 
-
+//login
 router.get("/login", (req, res, next) => {
   res.render("auth/login", {
     "message": req.flash("error")
   });
 });
 
+//login
 router.post("/login", passport.authenticate("local", {
   successRedirect: "/",
   failureRedirect: "/auth/login",
@@ -28,10 +24,14 @@ router.post("/login", passport.authenticate("local", {
   passReqToCallback: true
 }));
 
+
+//signup
 router.get("/signup", (req, res, next) => {
   res.render("auth/signup");
 });
 
+
+//signup
 router.post("/signup", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -74,16 +74,21 @@ router.post("/signup", (req, res, next) => {
   });
 });
 
+
+//logout
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
 });
 
+
+//vista de perfil de usuario
 router.get('/profile', ensureAuthenticated, (req, res) => {
   res.render('auth/profile', {
     user: req.user
   });
 });
+
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
@@ -93,6 +98,8 @@ function ensureAuthenticated(req, res, next) {
   }
 }
 
+
+//vista de peliculas pendientes dentro del perfil del usuario
 router.get('/profile/pending', ensureAuthenticated, (req, res) => {
   User.findById(req.user._id)
     .populate("pending")
@@ -104,7 +111,7 @@ router.get('/profile/pending', ensureAuthenticated, (req, res) => {
     })
 });
 
-
+//vista de peliculas vistas dentro del perfil del usuario
 router.get('/profile/seen', ensureAuthenticated, (req, res) => {
   User.findById(req.user._id)
     .populate('shown')
@@ -118,6 +125,7 @@ router.get('/profile/seen', ensureAuthenticated, (req, res) => {
 });
 
 
+//vista de eventos dentro del perfil del usuario
 router.get('/profile/events', ensureAuthenticated, (req, res) => {
   User.findById(req.user._id)
     .populate({
@@ -136,6 +144,8 @@ router.get('/profile/events', ensureAuthenticated, (req, res) => {
     })
 });
 
+
+//darme de baja de un evento
 router.get('/profile/events/delete', (req, res) => {
   User.findByIdAndUpdate(req.user._id, {
       $pullAll: {
@@ -154,7 +164,7 @@ router.get('/profile/events/delete', (req, res) => {
 })
 
 
-
+//borra una pelicula de la vista de vistas
 router.get('/profile/seen/delete', (req, res) => {
   console.log("la query", req.query.movieId, "el user", req.user._id)
   User.findByIdAndUpdate(req.user._id, {
@@ -166,7 +176,7 @@ router.get('/profile/seen/delete', (req, res) => {
     .catch(err => console.log(err))
 })
 
-
+//borrar una pelicula de la vista de pendientes y añadirla en vistas
 router.get('/profile/pending/delete', (req, res) => {
   console.log("la query", req.query.movieId, "el user", req.user._id)
   User.findByIdAndUpdate(req.user._id, {
@@ -180,6 +190,8 @@ router.get('/profile/pending/delete', (req, res) => {
     .then(res.redirect("/auth/profile/pending"))
     .catch(err => console.log(err))
 })
+
+//borrar una pelicula de la vista de pendientes
 router.get('/profile/pending/deleteFromPending', (req, res) => {
   console.log("la query", req.query.movieId, "el user", req.user._id)
   User.findByIdAndUpdate(req.user._id, {
