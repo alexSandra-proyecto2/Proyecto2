@@ -9,7 +9,7 @@ function getAllMoviesFromTheAPI(myMap) {
 }
 
 function placeMovie(movies, myMap) {
-
+  var activeInfoWindow;
   //console.log(movies, "esto estoy pintando")
   movies.forEach(elm => {
 
@@ -19,13 +19,6 @@ function placeMovie(movies, myMap) {
         lat: elm.location[i].coordinates.lat,
         lng: elm.location[i].coordinates.lng
       }
-
-
-      //  < a href = "/movies/pending?movieId={{id}}"
-      //  class = "btn btn-dark" > Pendiente < /a> <
-      //    a href = "/movies/shown?movieId={{id}}"
-      //  class = "btn btn-dark" > Vista < /a>
-
 
       const infoMovie = '<h4 style="text-align:center">' + elm.title + '</h4><br>' + '<div style="padding:0 12px"><img src="http://image.tmdb.org/t/p/w185/' + elm.poster_path + '" alt="imagen"><br><a href="/movies/pending?movieId=' + elm.id + '" style="margin-top:10px" class="btn btn-dark"> Añadir a pendientes</a><br><a href="/movies/shown?movieId=' + elm.id + '" style="margin-top:10px" class="btn btn-dark"> Añadir a vistas</a>'
       let marker = new google.maps.Marker({
@@ -39,7 +32,11 @@ function placeMovie(movies, myMap) {
       })
 
       marker.addListener('click', () => {
-        infowindow.open(myMap, marker)
+        if (activeInfoWindow) {
+          activeInfoWindow.close();
+        }
+        infowindow.open(map, marker);
+        activeInfoWindow = infowindow;
       })
     }
   })
@@ -126,7 +123,9 @@ function initMap() {
       {
         featureType: 'country',
         elementType: 'labels.text.fill',
-        stylers: [{ color: '#FF8A17' }]
+        stylers: [{
+          color: '#FF8A17'
+        }]
       },
       {
         featureType: 'road.highway',
@@ -190,7 +189,7 @@ function getAllEventFromTheAPI(myMap) {
 }
 
 function placeEvent(event, myMap) {
-
+  var activeInfoWindow;
   console.log(event, "esto estoy pintando de events")
   event.forEach(elm => {
 
@@ -211,7 +210,11 @@ function placeEvent(event, myMap) {
     })
 
     marker.addListener('mouseover', () => {
-      infowindow.open(myMap, marker)
+      if (activeInfoWindow) {
+        activeInfoWindow.close();
+      }
+      infowindow.open(map, marker);
+      activeInfoWindow = infowindow;
     })
     //}
   })
