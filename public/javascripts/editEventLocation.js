@@ -32,6 +32,5 @@ document.getElementById('guardacambio').addEventListener("click", (event) => {
 
         }
       })
-      //.then(x => window.location.href = "http://localhost:3000/events")
     })
 });

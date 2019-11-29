@@ -31,7 +31,7 @@ router.get('/api/:id', (req, res, next) => {
   });
 });
 
-// to see raw data in your browser, just go on: http://localhost:3000/restaurants/api
+
 router.get('/api', (req, res, next) => {
   Movie.find()
     .then(movieFromDB => res.status(200).json({
@@ -46,7 +46,6 @@ router.get('/api', (req, res, next) => {
 });
 
 
-// to see raw data in your browser, just go on: http://localhost:3000/api/someIdHere
 router.get('/api/:id', (req, res, next) => {
   let movieId = req.params.id;
   let eventId = req.params.id

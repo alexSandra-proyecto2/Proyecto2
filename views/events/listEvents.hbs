@@ -14,22 +14,6 @@
     </div>
   
 
-<<<<<<< HEAD
-  {{#each event}}
-  <div class="row">
-    <div class="col-md-6">
-      <br><br>
-      <h5><strong>Nombre del evento: </strong> {{name}}</h5>
-      <p><strong>Día del evento: </strong>{{date}}</p>
-      <p><strong>Descripción del envento:</strong> {{description}}</p>
-      <p><strong>Creador del evento:</strong> {{creator}}</p>
-      <p><strong>Tipo de evento:</strong> {{type}}</p>
-      <p><strong>Dirección del evento:</strong> {{address}}</p>
-      <p><strong>Asistentes:</strong></p>
-      {{#each this.assistants}}
-      <p>{{this.username}}</p>
-      {{/each}}
-=======
     {{#each event}}
     <div class="container-events">
       <div class="col-md-6 card-body">
@@ -43,7 +27,6 @@
         {{#each this.assistants}}
         <p>{{this.username}}</p>
         {{/each}}
->>>>>>> alex
 
         <a href="/events/join?eventId={{_id}}" class="btn btn-dark">Unirme al evento</a>
         <a href="/events/edit?eventId={{_id}}" class="btn btn-dark">Modificar evento</a>
