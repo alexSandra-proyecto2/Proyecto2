@@ -1,34 +1,36 @@
 <div class="events-index">
-<div class="container">
-  <br>
-  <div class="row">
-    <div class="col-md-8">
-      {{#with user}}
-      <h1 style="font-weight: 100">Perfíl de <asine style="font-weight: 100; text-transform:uppercase">{{username}}</asine></h1>
-      {{/with}}
+  <div class="container">
+    <br>
+    <div class="row header">
+      <div class="col-md-8">
+        {{#with user}}
+        <h1 style="font-weight: 100">Perfíl de <asine style="font-weight: 100; text-transform:uppercase">{{username}}
+          </asine>
+        </h1>
+        {{/with}}
+      </div>
+      <div class="col-md-4">
+      </div>
     </div>
-    <div class="col-md-4">
+    <br>
+    {{#with user}}
+    <div class="container-events">
+      <div class="col-md-6 card-body">
+        <br><br>
+        <p style="font-size:25px"><strong>Userame: </strong>{{username}}</p>
+        <br>
+        <p style="font-size:25px"><strong>Email: </strong>{{email}}</p>
+        <br>
+        {{!-- <a href="#" class="btn btn-dark">Editar Perfil </a> --}}
+        <a href="/auth/profile/pending" class="btn btn-dark">Películas pendientes </a>
+        <a href="/auth/profile/seen" class="btn btn-dark">Películas vistas</a>
+        <a href="/auth/profile/events" class="btn btn-dark">Eventos</a>
+      </div>
     </div>
-  </div>
-  <br>
-  {{#with user}}
-  <div class="container-events">
-    <div class="col-md-6 card-body">
-      <br><br>
-      <p style="font-size:25px"><strong>Userame: </strong>{{username}}</p>
-      <br>
-      <p style="font-size:25px"><strong>Email: </strong>{{email}}</p>
-      <br>
-      {{!-- <a href="#" class="btn btn-dark">Editar Perfil </a> --}}
-      <a href="/auth/profile/pending" class="btn btn-dark">Películas pendientes </a>
-      <a href="/auth/profile/seen" class="btn btn-dark">Películas vistas</a>
-      <a href="/auth/profile/events" class="btn btn-dark">Eventos</a>
-    </div>
-  </div>
-  <hr>
-  {{/with}}
+    <hr>
+    {{/with}}
 
 
-</div>
+  </div>
 
 </div>

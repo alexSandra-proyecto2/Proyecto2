@@ -5,22 +5,25 @@ body {
 .navbar {
   font: 14px "Altasi", Helvetica, Arial, sans-serif;
 }
+
 a {
   color: #00B7FF;
 }
 
 .white {
-  color:#E1E3E2;
+  color: #E1E3E2;
 }
+
 /*# sourceMappingURL=style.css.map */
 
 #map {
   height: 675px;
   margin-top: 18px;
+
 }
 
 h1 {
-  color:#E1E3E2
+  color: #E1E3E2
 }
 
 
@@ -37,8 +40,8 @@ h1 {
 
 .movies-index {
   /* background-color:  #252f3e; */
-  background-image: linear-gradient(to right,#252f3e , #3D5A80);
-  
+  background-image: linear-gradient(to right, #252f3e, #3D5A80);
+
 }
 
 
@@ -52,25 +55,29 @@ h1 {
 
 .containerMovies {
   background-color: #9fb5c7;
-  background-image: linear-gradient(to right,#7187A2 , #9fb5c7);
+  background-image: linear-gradient(to right, #7187A2, #9fb5c7);
   display: flex;
   height: 320px;
   color: #404040;
   /* color: #E1E3E2; */
 }
+
 .image-movies {
   width: 30%;
 }
+
 .img-movie {
   display: block;
   margin: 0 auto;
   margin-top: 22px;
   box-shadow: 5px 5px 5px #808080;
-  
+
 }
+
 .card-body {
   width: 60%;
 }
+
 .description-movies {
   height: 120px;
 }
@@ -82,17 +89,18 @@ h1 {
 
 .events-index {
   /* background-color:  #252f3e; */
-  background-image: linear-gradient(to right,#252f3e , #3D5A80);
+  background-image: linear-gradient(to right, #252f3e, #3D5A80);
   height: 100vw;
-  
+
 }
- .container-events{
+
+.container-events {
   background-color: #9fb5c7;
-  background-image: linear-gradient(to right,#7187A2 , #9fb5c7);
+  background-image: linear-gradient(to right, #7187A2, #9fb5c7);
   /* display: flex; */
   color: #404040;
 
-/* color: #E1E3E2; */
+  /* color: #E1E3E2; */
 }
 
 

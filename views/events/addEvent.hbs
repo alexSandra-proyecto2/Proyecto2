@@ -1,43 +1,47 @@
-<div class="container">
-  <br>
-  <div class="row">
+<div class="edit-index">
 
-    <div class="col-md-6">
-      <h1 style="font-weight: 100">Nuevo evento</h1>
-    </div>
+  <div class="container">
+    <br>
+    <div class="row header">
 
-    <div class="col-md-6">
+      <div class="col-md-6">
+        <h1 style="font-weight: 100">Nuevo evento</h1>
+      </div>
 
-      <form action="/events/add" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-          <label for="name-input">Nombre del evento</label>
-          <input name="name" type="text" class="form-control" id="name-input">
-        </div>
-        <div class="form-group">
-          <label for="date-input">Dia del evento</label>
-          <input name="date" type="Date" class="form-control" id="date-input">
-        </div>
-        <div class="form-group">
-          <label for="description-input">Descripción</label>
-          <input name="description" type="text" class="form-control" id="description-input">
-        </div>
-        <div class="form-group">
-          <label for="type-input">Tipo de evento</label>
-          <input name="type" type="text" class="form-control" id="type-input">
-        </div>
-        <div class="form-group">
-          <label for="dirInput2">Dirección: </label>
-          <input type="text" id="dirInput2" name="address" placeholder="Calle Serrano 14, Madrid" class="form-control">
-        </div>
-        {{!-- <div class="form-group">
+      <div class="col-md-6">
+
+        <form action="/events/add" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="name-input" style="color:#E1E3E2">Nombre del evento</label>
+            <input name="name" type="text" class="form-control" id="name-input">
+          </div>
+          <div class="form-group">
+            <label for="date-input" style="color:#E1E3E2">Dia del evento</label>
+            <input name="date" type="Date" class="form-control" id="date-input">
+          </div>
+          <div class="form-group">
+            <label for="description-input" style="color:#E1E3E2">Descripción</label>
+            <input name="description" type="text" class="form-control" id="description-input">
+          </div>
+          <div class="form-group">
+            <label for="type-input" style="color:#E1E3E2">Tipo de evento</label>
+            <input name="type" type="text" class="form-control" id="type-input">
+          </div>
+          <div class="form-group">
+            <label for="dirInput2" style="color:#E1E3E2">Dirección: </label>
+            <input type="text" id="dirInput2" name="address" placeholder="Calle Serrano 14, Madrid"
+              class="form-control">
+          </div>
+          {{!-- <div class="form-group">
           <label for='picPath'>Foto del evento:</label>
           <input name='picPath' type='file' id='picPath'>
         </div> --}}
 
-        <button type="submit" class="btn btn-dark" id="creaEvento">Crear evento</button>
-      </form>
-    </div>
+          <button type="submit" class="btn btn-dark" id="creaEvento">Crear evento</button>
+        </form>
+      </div>
 
+    </div>
   </div>
 </div>
 
