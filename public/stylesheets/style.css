@@ -2,25 +2,20 @@ body {
   font: 14px "Roboto", Helvetica, Arial, sans-serif;
 }
 
-.navbar {
-  font: 14px "Altasi", Helvetica, Arial, sans-serif;
-}
-a {
-  color: #00B7FF;
-}
-
-.white {
-  color:#E1E3E2;
-}
-/*# sourceMappingURL=style.css.map */
-
-#map {
-  height: 675px;
-  margin-top: 18px;
+label {
+  color:#E1E3E2
 }
 
 h1 {
   color:#E1E3E2
+}
+
+a {
+  color: #00B7FF;
+}
+
+.navbar {
+  font: 14px "Altasi", Helvetica, Arial, sans-serif;
 }
 
 
@@ -32,6 +27,21 @@ h1 {
 .icon {
   width: 50px;
 }
+
+
+.white {
+  color:#E1E3E2;
+}
+
+/*# sourceMappingURL=style.css.map */
+
+/* ---------------- Index ---------------- */
+
+#map {
+  height: 675px;
+  margin-top: 18px;
+}
+
 
 /* ---------------- Movies ---------------- */
 
@@ -96,6 +106,8 @@ h1 {
 }
 
 
-
-
-/* ---------------- Login ---------------- */
+.edit-index {
+  /* background-color:  #252F3E; */
+  background-image: linear-gradient(to right, #252F3E, #3D5A80);
+  height: 100vw;
+}
