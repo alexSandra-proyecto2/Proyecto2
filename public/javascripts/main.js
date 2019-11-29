@@ -124,6 +124,11 @@ function initMap() {
         }]
       },
       {
+        featureType: 'country',
+        elementType: 'labels.text.fill',
+        stylers: [{ color: '#FF8A17' }]
+      },
+      {
         featureType: 'road.highway',
         elementType: 'geometry.stroke',
         stylers: [{
