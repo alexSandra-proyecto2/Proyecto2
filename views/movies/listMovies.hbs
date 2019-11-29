@@ -1,19 +1,19 @@
 <!-- index.hbs -->
-<div class="movies-index" >
-  <div class="container movies-index">
-    <div class="info-page row movies-header">
+<div class="movies-index">
+  <div class="container">
+    <div class="info-page row header">
       <div class="col-md-4">
-
-        <h1 style="font-weight: 100; color:#E1E3E2">Lista de películas</h1>
-
+      
+      <h1 style="font-weight: 100">Lista de películas</h1>
+     
       </div>
       <div class="col-md-6">
       </div>
       <div class="col-md-2">
-
-        <a href="/movies/{{page}}" class="btn btn-dark next-btn" style="align-items-right">Página siguiente</a>
-
-      </div>
+      
+      <a href="/movies/{{page}}" class="btn btn-dark next-btn"style="align-items-right">Página siguiente</a>
+    
+    </div>
     </div>
 
     {{#each movies}}

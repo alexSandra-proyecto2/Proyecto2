@@ -4,16 +4,19 @@ body {
 
 .navbar {
   font: 14px "Altasi", Helvetica, Arial, sans-serif;
-   color:#E1E3E2;
 }
 a {
   color: #00B7FF;
 }
 
+.white {
+  color:#E1E3E2;
+}
 /*# sourceMappingURL=style.css.map */
 
 #map {
-  height: 675px
+  height: 675px;
+  margin-top: 18px;
 }
 
 h1 {
@@ -21,7 +24,14 @@ h1 {
 }
 
 
+.header {
+  padding: 40px 0 30px 0;
+}
 
+
+.icon {
+  width: 50px;
+}
 
 /* ---------------- Movies ---------------- */
 
@@ -31,9 +41,6 @@ h1 {
   
 }
 
-.movies-header {
-  padding: 30px 0;
-}
 
 .next-btn {
   align-items: flex-end;
@@ -76,12 +83,19 @@ h1 {
 .events-index {
   /* background-color:  #252f3e; */
   background-image: linear-gradient(to right,#252f3e , #3D5A80);
+  height: 100vw;
   
 }
  .container-events{
   background-color: #9fb5c7;
   background-image: linear-gradient(to right,#7187A2 , #9fb5c7);
-  display: flex;
+  /* display: flex; */
   color: #404040;
+
 /* color: #E1E3E2; */
 }
+
+
+
+
+/* ---------------- Login ---------------- */

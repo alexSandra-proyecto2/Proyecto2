@@ -1,31 +1,31 @@
-<div class="container coasters-index">
-  <br>
-  <div class="row">
-    <div class="col-md-4">
-      <h1 style="font-weight: 100">Películas vistas</h1>
+<div class="movies-index">
+  <div class="container ">
+    <br>
+    <div class="row header">
+      <div class="col-md-4">
+        <h1 style="font-weight: 100">Películas vistas</h1>
+      </div>
+      <div class="col-md-8">
+      </div>
     </div>
-    <div class="col-md-8">
+    <br>
+
+    {{#each shown}}
+
+    <div class="containerMovies">
+      
+      <div class="image-movies">
+        <img src="http://image.tmdb.org/t/p/w185/{{poster_path}}" alt="imagen" class="img-movie">
+      </div>
+      <div class="card-body">
+        <h5><strong>Título: </strong> {{title}}</h5>
+        <p class="description-movies"><strong>Descripción: </strong>{{overview}}</p>
+        <p><strong>Calificación:</strong> {{vote_average}}</p>
+        <a href="/auth/profile/seen/delete?movieId={{_id}}" class="btn btn-dark">Borrar de la lista de vistas</a>
+      </div>
     </div>
+    <hr>
+    {{/each}}
+
   </div>
-  <br>
-
-  {{#each shown}}
-
-  <div class="row">
-    <div class="col-md-1">
-    </div>
-    <div class="col-md-2">
-      <img src="http://image.tmdb.org/t/p/w185/{{poster_path}}" alt="imagen">
-    </div>
-    <div class="col-md-8">
-      <br><br>
-      <h5><strong>Título: </strong> {{title}}</h5>
-      <p><strong>Descripción: </strong>{{overview}}</p>
-      <p><strong>Calificación:</strong> {{vote_average}}</p>
-      <a href="/auth/profile/seen/delete?movieId={{_id}}" class="btn btn-dark">Borrar de la lista de vistas</a>
-    </div>
-  </div>
-  <br>
-  {{/each}}
-
 </div>
