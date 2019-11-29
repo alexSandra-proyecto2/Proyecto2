@@ -209,7 +209,7 @@ function placeEvent(event, myMap) {
       content: infoEvent,
     })
 
-    marker.addListener('mouseover', () => {
+    marker.addListener('click', () => {
       if (activeInfoWindow) {
         activeInfoWindow.close();
       }

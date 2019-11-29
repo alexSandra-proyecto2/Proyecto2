@@ -3,17 +3,17 @@
   <div class="container">
     <div class="info-page row header">
       <div class="col-md-4">
-      
-      <h1 style="font-weight: 100">Lista de películas</h1>
-     
+
+        <h1 style="font-weight: 100">Lista de películas</h1>
+
       </div>
       <div class="col-md-6">
       </div>
       <div class="col-md-2">
-      
-      <a href="/movies/{{page}}" class="btn btn-dark next-btn"style="align-items-right">Página siguiente</a>
-    
-    </div>
+
+        <a href="/movies/{{page}}" class="btn btn-dark next-btn">Página siguiente</a>
+
+      </div>
     </div>
 
     {{#each movies}}
@@ -33,8 +33,14 @@
     </div>
     <hr>
     {{/each}}
+    <div class="row">
+      <div class="col-md-10">
+      </div>
+      <div class="col-md-2">
+        <a href="/movies/{{page}}" class="btn btn-dark btn-next">Página siguiente</a>
+        <br>
+      </div>
+    </div>
   </div>
-
-  <a href="/movies/{{page}}" class="btn btn-dark">Página siguiente</a>
 
 </div>

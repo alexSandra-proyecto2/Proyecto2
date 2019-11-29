@@ -12,6 +12,7 @@ a {
 
 .white {
   color: #E1E3E2;
+  font-size: 18px
 }
 
 /*# sourceMappingURL=style.css.map */
@@ -60,12 +61,13 @@ h1 {
 }
 
 
-.next-btn {
+.btn-next {
+  display: block;
   align-items: flex-end;
 }
 
 .btn-dark {
-  background-color: #082E42;
+  background-color: #081c25;
 }
 
 .containerMovies {
