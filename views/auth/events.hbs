@@ -1,20 +1,22 @@
-<div class="container coasters-index">
-  <br>
-  <div class="row">
-    <div class="col-md-4">
-      <h1 style="font-weight: 100">Mis eventos</h1>
+<div class="events-index">
+  <div class="container">
+    <br>
+    <div class="row">
+      <div class="col-md-4">
+        <h1 style="font-weight: 100">Mis eventos</h1>
+      </div>
+      <div class="col-md-8">
+      </div>
     </div>
-    <div class="col-md-8">
-    </div>
-  </div>
-  <br>
+    <br>
 
-  {{#each events}}
+    {{#each events}}
 
-  <div class="row">
-    <div class="col-md-1">
-    </div>
-    {{!-- <div class="col-md-2">
+    <div class="row">
+      <div class="container-events">
+        <div class="col-md-2">
+        </div>
+        {{!-- <div class="col-md-2">
       <img src="http://image.tmdb.org/t/p/w185/{{poster_path}}" alt="imagen">
     </div> --}}
     <div class="col-md-8">
@@ -29,9 +31,8 @@
       {{/each}}
       <a href="/auth/profile/events/delete?eventId={{_id}}" class="btn btn-dark">Darme de baja</a>
     </div>
-  </div>
-  <hr>
-  <br>
-  {{/each}}
+    <hr>
+    {{/each}}
 
+  </div>
 </div>
