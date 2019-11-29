@@ -29,6 +29,6 @@ document.getElementById('creaEvento').addEventListener("click", (event) => {
 
           }
         })
-        .then(x => window.location.href = "http://localhost:3000/events")
+        .then(x => window.location.href = "https://alexsandra.herokuapp.com/events")
     })
 });
