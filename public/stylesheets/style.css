@@ -10,6 +10,10 @@ a {
   color: #00B7FF;
 }
 
+label {
+  color: #E1E3E2;
+}
+
 .white {
   color: #E1E3E2;
   font-size: 18px
@@ -37,10 +41,6 @@ h1 {
   width: 50px;
 }
 
-
-.white {
-  color:#E1E3E2;
-}
 
 /*# sourceMappingURL=style.css.map */
 

@@ -19,11 +19,15 @@ function placeMovie(movies, myMap) {
         lat: elm.location[i].coordinates.lat,
         lng: elm.location[i].coordinates.lng
       }
-
+      const icon = {
+        url: "/images/market_orange.png",
+        scaledSize: new google.maps.Size(25, 35), 
+      }
       const infoMovie = '<h4 style="text-align:center">' + elm.title + '</h4><br>' + '<div style="padding:0 12px"><img src="http://image.tmdb.org/t/p/w185/' + elm.poster_path + '" alt="imagen"><br><a href="/movies/pending?movieId=' + elm.id + '" style="margin-top:10px" class="btn btn-dark"> Añadir a pendientes</a><br><a href="/movies/shown?movieId=' + elm.id + '" style="margin-top:10px" class="btn btn-dark"> Añadir a vistas</a>'
       let marker = new google.maps.Marker({
         position: center,
-        map: myMap
+        map: myMap,
+        icon: icon
       })
       let infowindow = new google.maps.InfoWindow({
         content: infoMovie,
@@ -82,16 +86,7 @@ function initMap() {
           color: '#d59563'
         }]
       },
-      // {
-      //   featureType: 'poi.park',
-      //   elementType: 'geometry',
-      //   stylers: [{ color: '#263c3f' }]
-      // },
-      // // {
-      // //   featureType: 'poi.park',
-      // //   elementType: 'labels.text.fill',
-      // //   stylers: [{ color: '#6b9a76' }]
-      // // },
+    
       {
         featureType: 'road',
         elementType: 'geometry',
@@ -141,16 +136,7 @@ function initMap() {
           color: '#f3d19c'
         }]
       },
-      // {
-      //   featureType: 'transit',
-      //   elementType: 'geometry',
-      //   stylers: [{ color: '#2f3948' }]
-      // },
-      // {
-      //   featureType: 'transit.station',
-      //   elementType: 'labels.text.fill',
-      //   stylers: [{ color: '#d59563' }]
-      // },
+      
       {
         featureType: 'water',
         elementType: 'geometry',
@@ -158,21 +144,10 @@ function initMap() {
           color: '#9FB4C7'
         }]
       },
-      // {
-      //   featureType: 'water',
-      //   elementType: 'labels.text.fill',
-      //   stylers: [{ color: '#515c6d' }]
-      // },
-      // {
-      //   featureType: 'water',
-      //   elementType: 'labels.text.stroke',
-      //   stylers: [{ color: '#17263c' }]
-      // }
+      
     ]
   })
-  // let geocoder = new google.maps.Geocoder();
 
-  // geocodeAddress(geocoder, "Calle Serrano 14, Madrid")
   getAllMoviesFromTheAPI(myMap)
   getAllEventFromTheAPI(myMap)
 
@@ -197,13 +172,17 @@ function placeEvent(event, myMap) {
       lat: elm.location.coordinates.lat,
       lng: elm.location.coordinates.lng
     }
+    const icon = {
+        url: "/images/market_verde.png",
+        scaledSize: new google.maps.Size(25, 35), 
+      }
     const infoEvent = '<h4 style="text-align:center">Título: ' + elm.name + '</h4>' + '<br> <p>Día del evento: ' + elm.date + '</p> <br> <p>Descripción: ' + elm.description + '</p>'
 
 
     let marker = new google.maps.Marker({
       position: center,
       map: myMap,
-      icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+      icon: icon
     })
     let infowindow = new google.maps.InfoWindow({
       content: infoEvent,
@@ -216,6 +195,5 @@ function placeEvent(event, myMap) {
       infowindow.open(map, marker);
       activeInfoWindow = infowindow;
     })
-    //}
   })
 }
