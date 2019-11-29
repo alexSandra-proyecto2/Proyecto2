@@ -37,6 +37,7 @@ a {
 
 .containerMovies {
   background-color: #9fb5c7;
+  background-image: linear-gradient(to right,#7187A2 , #9fb5c7);
   display: flex;
   height: 320px;
   color: #404040;

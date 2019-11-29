@@ -90,6 +90,11 @@ function initMap() {
         stylers: [{ color: '#746855' }]
       },
       {
+        featureType: 'country',
+        elementType: 'labels.text.fill',
+        stylers: [{ color: '#FF8A17' }]
+      },
+      {
         featureType: 'road.highway',
         elementType: 'geometry.stroke',
         stylers: [{ color: '#1f2835' }]
