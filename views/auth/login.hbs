@@ -1,36 +1,39 @@
-{{!-- <div class="container">
-  <br>
-  <div class="row">
+<div class="edit-index">
+  <div class="container">
+    <br>
+    <div class="row header">
 
-    <div class="col-md-6">
-      <h1 style="font-weight: 100">Login</h1>
-    </div> --}}
-
-    <div class="col-md-6">
-
-      <form action="/auth/login" method="POST" id="form-container">
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input id="email" class="form-control" type="email" name="email" placeholder="JonSnow@gmail.com">
-        </div>
-        <br>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input id="password" class="form-control" type="password" name="password" placeholder="Your password">
-        </div>
-        <br>
-        {{#if message }}
-        <div class="error-message">{{ message }}</div>
-        {{/if}}
+      <div class="col-md-6">
+        <h1 style="font-weight: 100">Login</h1>
+      </div>
 
 
-        <button type="submit" class="btn btn-dark">Login</button>
+      <div class="col-md-6">
 
-        <p class="account-message">
+        <form action="/auth/login" method="POST" id="form-container">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" class="form-control" type="email" name="email" placeholder="JonSnow@gmail.com">
+          </div>
           <br>
-          Don't have an account yet?
-          <a href="/auth/signup">Signup</a>
-        </p>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" class="form-control" type="password" name="password" placeholder="Your password">
+          </div>
+          <br>
+          {{#if message }}
+          <div class="error-message">{{ message }}</div>
+          {{/if}}
+
+
+          <button type="submit" class="btn btn-dark">Login</button>
+
+          <p style="color:#E1E3E2" class="account-message">
+            <br>
+            Don't have an account yet?
+            <a href="/auth/signup">Signup</a>
+          </p>
+      </div>
     </div>
   </div>
 </div>
@@ -41,20 +44,30 @@
     <div class="col-md-6 app-title">
       <h1>Login</h1>
     </div> --}}
-
+{{!-- 
     <div class="login-form">
       <div class="control-group">
-        <input type="text" class="login-field" value="" placeholder="username" id="login-name">
-        <label class="login-field-icon fui-user" for="login-name"></label>
+        <label class="login-field-icon fui-user" for="email">Email</label>
+        <br>
+        <input type="text" class="login-field" value="" placeholder="username" id="email">
       </div>
 
       <div class="control-group">
-        <input type="password" class="login-field" value="" placeholder="password" id="login-pass">
-        <label class="login-field-icon fui-lock" for="login-pass"></label>
+        <label class="login-field-icon fui-lock" for="password">Password</label>
+        <br>
+        <input type="password" class="login-field" value="" placeholder="password" id="password">
       </div>
+      <br>
+      {{#if message }}
+      <div class="error-message">{{ message }}</div>
+      {{/if}}
 
       <a class="btn btn-primary btn-large btn-block" href="#">login</a>
-      <a class="login-link" href="#">Lost your password?</a>
+      <p class="account-message">
+        <br>
+        Don't have an account yet?<a class="login-link" href="/auth/signup">Signup</a>
+      </p>
+     
     </div>
   </div>
-</div>
+</div> --}}
